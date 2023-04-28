@@ -33,3 +33,75 @@
 	--circle-middle-color: #3e44e0;
 	--circle-inner-color: #131bde;
 }
+
+body {
+	display: flex;
+	height: 100vh;
+	font-family: 'Inter';
+}
+
+/* Landing Page style */
+
+.left {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.left-container {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	padding: 5px;
+}
+
+.left-container-title {
+	flex: 1;
+	display: flex;
+	align-items: center;
+}
+
+.left-container-title h1 {
+	font-size: 128px;
+	text-align: center;
+	color: var(--main-color);
+	text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	cursor: default;
+}
+
+.left-container-buttons {
+	flex: 1;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+#sign-up,
+#sign-in {
+	background-color: var(--main-color);
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	border-radius: 10px;
+	border: none;
+	color: var(--secondary-color);
+	height: 80px;
+	width: 390px;
+	font-size: 36px;
+}
+
+#sign-up:hover,
+#sign-in:hover {
+	cursor: pointer;
+	background-color: var(--secondary-color);
+	color: var(--main-color);
+}
+
+.right {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
