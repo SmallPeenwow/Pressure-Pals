@@ -1,0 +1,30 @@
+:root {
+	--main-color: #0085ff;
+	--secondary-color: #ffffff;
+	--third-color: #000000;
+
+	--table-time-display-color: #51ade1;
+	--table-date-display-color: #009ff9;
+	--table-slot-available-color: #ffffff;
+	--table-slot-closed-color: #d7d7d7;
+	--table-slot-pending-color: #ecd505;
+	--table-slot-accepted-color: #3dd807;
+
+	--user-bookings-declined-background-color: #ce2b2b;
+	--user-bookings-pending-background-color: #f0da10;
+	--user-bookings-accepted-background-color: #46da12;
+
+	--booking-accept-button-color: #46da12;
+	--booking-decline-button-color: #e20a0a;
+
+	--admin-booking-not-complete-background-color: #ffffff;
+	--admin-booking-in-progress-background-color: #f0da10;
+	--admin-booking-completed-background-color: #46da12;
+
+	--circle-outer-color: #0085ff;
+	--circle-middle-color: #3e44e0;
+	--circle-inner-color: #131bde;
+
+	--default-border-radius: 10px;
+	--default-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}

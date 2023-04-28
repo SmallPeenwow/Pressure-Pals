@@ -1,4 +1,4 @@
-import SendToSignInPage from './src/landingPage.js';
+import SendToSignInPage from './src/components/buttonSendTo.js';
 
 const SignIn = document.querySelector('#sign-in');
 
