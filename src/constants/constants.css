@@ -25,6 +25,11 @@
 	--circle-middle-color: #3e44e0;
 	--circle-inner-color: #131bde;
 
-	--default-border-radius: 10px;
+	--border-radius-10: 10px;
+	--border-radius-5: 5px;
 	--default-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	--default-text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+	--input-background-color: #f4f4f4;
+	--input-focus-border-color: #cccccc;
 }

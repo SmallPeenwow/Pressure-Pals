@@ -44,7 +44,7 @@ body {
 	font-size: 128px;
 	text-align: center;
 	color: var(--main-color);
-	text-shadow: var(--default-box-shadow);
+	text-shadow: var(--default-text-shadow);
 	cursor: default;
 }
 
@@ -60,7 +60,7 @@ body {
 #sign-in {
 	background-color: var(--main-color);
 	box-shadow: var(--default-box-shadow);
-	border-radius: var(--default-border-radius);
+	border-radius: var(--border-radius-10);
 	border: none;
 	color: var(--secondary-color);
 	height: 80px;
@@ -89,7 +89,7 @@ body {
 .right-offer-container {
 	height: 300px;
 	width: 500px;
-	border-radius: var(--default-border-radius);
+	border-radius: var(--border-radius-10);
 	box-shadow: var(--default-box-shadow);
 	background-color: var(--secondary-color);
 }
@@ -98,7 +98,7 @@ body {
 .right-offer-container h3 {
 	background-color: var(--main-color);
 	padding: 10px 0px 10px 15px;
-	border-radius: var(--default-border-radius) var(--default-border-radius) 0px 0px;
+	border-radius: var(--border-radius-10) var(--border-radius-10) 0px 0px;
 	color: var(--secondary-color);
 	font-size: 30px;
 	cursor: default;
