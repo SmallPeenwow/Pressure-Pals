@@ -76,6 +76,10 @@ form {
 	outline: none;
 }
 
+#name::placeholder {
+	color: #dfdfdf;
+}
+
 .submit-input {
 	background-color: var(--main-color);
 	box-shadow: var(--default-box-shadow);
