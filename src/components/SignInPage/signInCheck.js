@@ -9,7 +9,7 @@ signInForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 
 	if (isEmptyOrWhitespace(nameValue.value)) {
-		makeSnackbarVisible('Please enter your name.', snackbar);
+		makeSnackbarVisible('Please enter in your name.', snackbar);
 		InputBorderColorChange(nameValue);
 	}
 });
