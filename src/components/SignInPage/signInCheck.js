@@ -11,15 +11,23 @@ signInForm.addEventListener('submit', (e) => {
 	if (isEmptyOrWhitespace(nameValue.value)) {
 		makeSnackbarVisible('Please enter in your name.', snackbar);
 		InputBorderColorChange(nameValue);
+		return;
 	}
+
+	sendToHomePage();
 });
 
-function isEmptyOrWhitespace(stringValue) {
+const isEmptyOrWhitespace = (stringValue) => {
 	return !stringValue || stringValue.trim().length === 0;
-}
+};
 
 const InputBorderColorChange = (inputTag) => {
 	inputTag.style.border = '1px solid red';
+};
+
+// Will be removed and replaced with php server side check validation
+const sendToHomePage = () => {
+	window.open('../../../pages/userHome.html', '_parent');
 };
 
 nameValue.addEventListener('change', (e) => {

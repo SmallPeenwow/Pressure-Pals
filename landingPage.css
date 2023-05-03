@@ -187,6 +187,7 @@ body {
 	body {
 		flex-direction: column;
 		gap: 120px;
+		overflow-y: auto;
 	}
 
 	.left-container {
