@@ -5,10 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/styles/signInStyle.css">
+    <link rel="stylesheet" href="/src/styles/snackbarStyle.css">
     <script type="module" defer src="/src/components/SignInPage/signInCheck.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
+
+    <div id="snack-bar"></div>
 
     <div class="circle-group-bottom-left">
         <div class="circle-inner bottom-left"></div>
@@ -28,15 +31,15 @@
 
     <main>
         <div>
-            <form>
+            <form id="signInForm">
                 <div class="input-container">
                     <label>Enter Email:</label>
-                    <input type="text">
+                    <input type="text" id="name">
                 </div>
                 
                 <div class="input-container">
                     <label>Enter Password:</label>
-                    <input type="password">
+                    <input type="password" id="password">
                 </div>
 
                 <input class="submit-input" type="submit" value="Sign In">

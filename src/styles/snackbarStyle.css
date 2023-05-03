@@ -1,0 +1,44 @@
+#snack-bar {
+	visibility: hidden;
+	min-width: 25rem;
+	left: 50%;
+	top: 5%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+	display: flex;
+	max-height: 5rem;
+	justify-content: center;
+	align-items: center;
+	background-color: black;
+	color: white;
+	border-radius: 2px;
+	padding: 1em;
+	position: fixed;
+}
+
+#snack-bar.show {
+	visibility: visible;
+	animation: fadein 0.5s, fadeout 0.5s 5s;
+}
+
+@keyframes fadein {
+	from {
+		top: 0;
+		opacity: 0;
+	}
+	to {
+		top: 5%;
+		opacity: 1;
+	}
+}
+
+@keyframes fadeout {
+	from {
+		top: 5%;
+		opacity: 1;
+	}
+	to {
+		top: 0;
+		opacity: 0;
+	}
+}
