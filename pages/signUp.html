@@ -4,68 +4,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/styles/signUpStyle.css">
     <title>Pressure Pals</title>
 </head>
 <body>
-    <header>Create Account</header>
+    <header>
+        <h1>
+            Create Account
+        </h1>
+    </header>
 
     <main>
         <section>
             <h2>Enter Details</h2>
-            <div>
-                <div>
-                    <label>Name</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label>Surname</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label>Email</label>
-                    <input type="text">
-                </div>
-                <div>
-                    <label>Cell Number</label>
-                    <input type="text">
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    <label>Password</label>
-                    <input type="password">
-                </div>
-                <div>
-                    <label>Confirm Password</label>
-                    <input type="password">
-                </div>
-            </div>
-
-            <div>
-                <div>
+            <div class="container">
+                <div class="section-div-one">
                     <div>
-                        <label>Address</label>
+                        <label>Name</label>
+                        <input type="text">
+                        <!-- <div>*</div> -->
+                    </div>
+                    <div>
+                        <label>Surname</label>
                         <input type="text">
                     </div>
                     <div>
-                        <label>Suburb</label>
+                        <label>Email</label>
                         <input type="text">
-                    </div>
-                </div>
-
-                <div>
-                    <div>
-                        <h2>Note:</h2>
-                        <p>
-                            Address and suburb is used to get to your location to do the job. If not entered here you will be asked to enter it every time you book.
-                        </p>
+                        <!-- <div>*</div> -->
                     </div>
                     <div>
-                        <input type="submit" value="Sign Up">
+                        <label>Cell Number</label>
+                        <input type="text">
+                        <!-- <div>*</div> -->
                     </div>
                 </div>
-            </div>        
+    
+                <div class="section-div-two">
+                    <div>
+                        <label>Password</label>
+                        <input type="password">
+                        <!-- <div>*</div> -->
+                    </div>
+                    <div>
+                        <label>Confirm Password</label>
+                        <input type="password">
+                    </div>
+                </div>
+    
+                <div class="section-div-three">
+                    <div class="div-three-container">
+                        <div>
+                            <label>Address</label>
+                            <input type="text">
+                        </div>
+                        <div>
+                            <label>Suburb</label>
+                            <input type="text">
+                        </div>
+                    </div>
+    
+                    <div class="div-three-container">
+                        <div class="note-container">
+                            <h3>Note:</h3>
+                            <p>
+                                Address and suburb is used to get to your location to do the job. If not entered here you will be asked to enter it every time you book.
+                            </p>
+                        </div>
+                        <div class="input-div">
+                            <input class="submit-input" type="submit" value="Sign Up">
+                        </div>
+                    </div>
+                </div>        
+            </div>
         </section>
     </main>
 </body>
