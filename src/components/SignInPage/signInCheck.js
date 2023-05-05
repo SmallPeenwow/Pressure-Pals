@@ -3,19 +3,26 @@ import makeSnackbarVisible from '../snackbar.js';
 const snackbar = document.querySelector('#snack-bar');
 
 const signInForm = document.querySelector('#signInForm');
-const nameValue = document.querySelector('#name');
+const nameValue = document.querySelector('#email');
 
-signInForm.addEventListener('submit', (e) => {
-	e.preventDefault();
+// signInForm.addEventListener('submit', (e) => {
+// 	e.preventDefault();
 
-	if (isEmptyOrWhitespace(nameValue.value)) {
-		makeSnackbarVisible('Please enter in your name.', snackbar);
+// 	if (isEmptyOrWhitespace(nameValue.value)) {
+// 		makeSnackbarVisible('Please enter in your Email.', snackbar);
+// 		InputBorderColorChange(nameValue);
+// 		return;
+// 	}
+
+// 	sendToHomePage();
+// });
+
+const signInFunctionCheck = (isValid, responseType) => {
+	if (!isValid) {
 		InputBorderColorChange(nameValue);
-		return;
+		makeSnackbarVisible(responseType, snackbar);
 	}
-
-	sendToHomePage();
-});
+};
 
 const isEmptyOrWhitespace = (stringValue) => {
 	return !stringValue || stringValue.trim().length === 0;

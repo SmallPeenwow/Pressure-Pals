@@ -11,6 +11,8 @@
 </head>
 <body>
 
+    <!-- <?php include 'index.php'?> -->
+
     <div id="snack-bar"></div>
 
     <div class="circle-group-bottom-left">
@@ -31,10 +33,10 @@
 
     <main>
         <div>
-            <form id="signInForm">
+            <form id="signInForm" method="post" action="http://localhost:3000/pages/SignIn/index.php">
                 <div class="input-container">
-                    <label for="name">Enter Email:</label>
-                    <input type="text" id="name" placeholder="Example@gmail.com" autocomplete="off">
+                    <label for="email">Enter Email:</label>
+                    <input type="text" id="email" placeholder="Example@gmail.com" autocomplete="off">
                 </div>
                 
                 <div class="input-container">
