@@ -61,6 +61,7 @@ section h2 {
 	flex-direction: column;
 	justify-content: space-evenly;
 	flex: 1;
+	padding-left: 40px;
 }
 
 .section-div-one,
@@ -68,7 +69,6 @@ section h2 {
 .section-div-three {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	justify-items: center;
 	row-gap: 20px;
 	column-gap: 60px;
 }
@@ -103,16 +103,6 @@ section h2 {
 	position: relative;
 }
 
-.input-div {
-	position: absolute;
-	bottom: 0;
-	right: 0;
-}
-
-.input-div input {
-	width: 250px;
-}
-
 /* Inputs Sections */
 
 input {
@@ -136,10 +126,14 @@ input:focus {
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-5);
 	height: 45px;
+	width: 250px;
 	font-size: 24px;
 	color: var(--secondary-color);
 	border: none;
 	cursor: pointer;
+	position: absolute;
+	bottom: 0;
+	right: 50px;
 }
 
 .submit-input:hover {
@@ -147,9 +141,148 @@ input:focus {
 	color: var(--main-color);
 }
 
+.input-required {
+	display: flex !important;
+	flex-direction: row !important;
+	align-items: center !important;
+	gap: 20px !important;
+}
+
+.star {
+	color: var(--booking-decline-button-color);
+	font-size: 24px;
+	font-weight: bold;
+}
+
 /* Label Sections */
 
 label {
 	font-size: 20px;
 	font-weight: 400;
+}
+
+/* Media Query */
+
+@media only screen and (max-width: 1200px) {
+	body {
+		overflow: auto;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	header h1 {
+		font-size: 36px;
+	}
+
+	section {
+		width: 670px;
+	}
+
+	.section-div-one,
+	.section-div-two,
+	.section-div-three {
+		column-gap: 40px;
+	}
+
+	input {
+		width: 230px;
+	}
+
+	label {
+		font-size: 18px;
+	}
+
+	.submit-input {
+		font-size: 20px;
+		right: 45px;
+	}
+
+	.note-container {
+		margin-top: 0px;
+		width: 250px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	.section-div-one,
+	.section-div-two,
+	.section-div-three {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	input {
+		width: 350px;
+	}
+
+	section {
+		height: auto;
+		margin-bottom: 50px;
+		width: 500px;
+	}
+
+	.container {
+		padding: 10px 40px 15px 40px;
+		gap: 20px;
+	}
+
+	.note-container {
+		margin-top: 0px;
+		width: 350px;
+	}
+
+	.submit-input {
+		position: initial;
+	}
+
+	body {
+		gap: 50px;
+	}
+
+	input {
+		font-size: 16px;
+	}
+}
+
+@media only screen and (max-width: 520px) {
+	section {
+		width: 350px;
+	}
+
+	.container {
+		padding: 10px 20px 15px 20px;
+		gap: 20px;
+	}
+
+	input {
+		width: 250px;
+	}
+
+	header h1 {
+		font-size: 30px;
+	}
+
+	section h2 {
+		font-size: 24px;
+	}
+
+	label {
+		font-size: 16px;
+	}
+
+	.star {
+		font-size: 20px;
+	}
+
+	.note-container {
+		width: 250px;
+		overflow-wrap: break-word;
+	}
+
+	input {
+		font-size: 14px;
+	}
+
+	.submit-input {
+		width: 310px;
+	}
 }
