@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/src/styles/signInStyle.css">
-    <link rel="stylesheet" href="/src/styles/snackbarStyle.css">
-    <script type="module" defer src="/src/components/SignInPage/signInCheck.js"></script>
+    <link rel="stylesheet" href="../src/styles/signInStyle.css">
+    <link rel="stylesheet" href="../src/styles/snackbarStyle.css">
+    <script type="module" defer src="../src/components/SignInPage/signInCheck.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
@@ -42,10 +42,12 @@
 
     <main>
         <div>
-            <form id="signInForm" method="post" action="http://localhost:3000/pages/SignIn/index.php">
+            <!-- <form id="signInForm" method="post" action="http://localhost:3000/client/src/php/signIn.php"> -->
+            <form id="signInForm" method="post" >
                 <div class="input-container">
                     <label for="email">Enter Email:</label>
                     <input type="text" id="email" placeholder="Example@gmail.com" autocomplete="off">
+                    <!-- <span class="error"><?php echo $error; ?></span> -->
                 </div>
                 
                 <div class="input-container">
@@ -53,7 +55,7 @@
                     <input type="password" id="password">
                 </div>
 
-                <input class="submit-input" type="submit" value="Sign In">
+                <input class="submit-input" name="login" type="submit" value="Sign In">
             </form>
         </div>
     </main>
