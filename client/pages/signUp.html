@@ -5,9 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../src/styles/signUpStyle.css">
+    <link rel="stylesheet" href="../src/styles/snackbarStyle.css">
+    <script type="module" defer src="../src/components/SignUpPage/index.js"></script>
+    <script type="module" defer src="../src/components/SignUpPage/changeTextInputs.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
+    <div id="snack-bar"></div>
 
     <div class="circle-group-one-left">
         <div class="circle-inner one-left"></div>
@@ -36,30 +40,30 @@
     <main>
         <section>
             <h2>Enter Details</h2>
-            <div class="container">
+            <form class="container" id="sign-up" method="post">
                 <div class="section-div-one">
                     <div>
-                        <label>Name</label>
+                        <label for="name">Name</label>
                         <div class="input-required">
-                            <input type="text">
+                            <input id="name" type="text">
                             <div class="star">*</div>
                         </div>
                     </div>
                     <div>
-                        <label>Surname</label>
-                        <input type="text">
+                        <label for="surname">Surname</label>
+                        <input id="surname" type="text">
                     </div>
                     <div>
-                        <label>Email</label>
+                        <label for="email">Email</label>
                         <div class="input-required">
-                            <input type="text">
+                            <input id="email" type="text">
                             <div class="star">*</div>
                         </div>
                     </div>
                     <div>
-                        <label>Cell Number</label>
+                        <label for="cell-number">Cell Number</label>
                         <div class="input-required">
-                            <input type="text">
+                            <input id="cell-number" type="text">
                             <div class="star">*</div>
                         </div>
                     </div>
@@ -67,27 +71,27 @@
     
                 <div class="section-div-two">
                     <div>
-                        <label>Password</label>
+                        <label for="password">Password</label>
                         <div class="input-required">
-                            <input type="password">
+                            <input id="password" type="password">
                             <div class="star">*</div>
                         </div>
                     </div>
                     <div>
-                        <label>Confirm Password</label>
-                        <input type="password">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input id="confirm-password" type="password">
                     </div>
                 </div>
     
                 <div class="section-div-three">
                     <div class="div-three-container">
                         <div>
-                            <label>Address</label>
-                            <input type="text">
+                            <label for="address">Address</label>
+                            <input id="address" type="text">
                         </div>
                         <div>
-                            <label>Suburb</label>
-                            <input type="text">
+                            <label for="suburb">Suburb</label>
+                            <input id="suburb" type="text">
                         </div>
                     </div>
     
@@ -101,7 +105,7 @@
                         <input class="submit-input" type="submit" value="Sign Up">
                     </div>
                 </div>        
-            </div>
+            </form>
         </section>
     </main>
 </body>

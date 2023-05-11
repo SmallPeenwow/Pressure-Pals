@@ -1,4 +1,5 @@
 <?php
+
     // Allow from any origin
     if (isset($_SERVER['HTTP_ORIGIN'])) {
         // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
@@ -33,6 +34,7 @@
     
         $isUser = false;
     
+        // Make connection global
         $host = 'localhost';
         $username = 'root';
         $password = 'password';

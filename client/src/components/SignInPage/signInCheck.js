@@ -1,4 +1,6 @@
 import makeSnackbarVisible from '../snackbar.js';
+import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
+import inputBorderColorChange from '../inputBorderColorChange.js';
 
 const snackbar = document.querySelector('#snack-bar');
 
@@ -12,11 +14,11 @@ signInForm.addEventListener('submit', async (e) => {
 
 	if (isEmptyOrWhitespace(emailValue.value)) {
 		makeSnackbarVisible('Please enter in your Email.', snackbar);
-		InputBorderColorChange(emailValue);
+		inputBorderColorChange(emailValue);
 		return;
 	} else if (isEmptyOrWhitespace(passwordValue.value)) {
 		makeSnackbarVisible('Please enter in your Password.', snackbar);
-		InputBorderColorChange(passwordValue);
+		inputBorderColorChange(passwordValue);
 	} else {
 		access_level = await getServerResponse();
 
@@ -25,12 +27,12 @@ signInForm.addEventListener('submit', async (e) => {
 		} else if (access_level === 'client') {
 			window.open('./userHome.html', '_parent');
 		} else {
-			makeSnackbarVisible('Please make sure you entered your Email and Password correctly', snackbar);
+			makeSnackbarVisible('Check that your Email and Password is correctly', snackbar);
 		}
 	}
 });
 
-const getServerResponse = () => {
+const getServerResponse = async () => {
 	const dataSubmit = new FormData();
 	dataSubmit.append('email', emailValue.value);
 	dataSubmit.append('password', passwordValue.value);
@@ -47,21 +49,6 @@ const getServerResponse = () => {
 			return data;
 		})
 		.catch((error) => console.log(error));
-};
-
-const signInFunctionCheck = (isValid, responseType) => {
-	if (!isValid) {
-		InputBorderColorChange(emailValue);
-		makeSnackbarVisible(responseType, snackbar);
-	}
-};
-
-const isEmptyOrWhitespace = (stringValue) => {
-	return !stringValue || stringValue.trim().length === 0;
-};
-
-const InputBorderColorChange = (inputTag) => {
-	inputTag.style.border = '1px solid red';
 };
 
 emailValue.addEventListener('change', (e) => {
