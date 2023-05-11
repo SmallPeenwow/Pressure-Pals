@@ -15,4 +15,6 @@ signUpForm.addEventListener('submit', async (e) => {
 	e.preventDefault();
 
 	await signUpCheck(name, email, cellNumber, password, confirmPassword, snackBar);
+
+	console.log(nextCheckStep);
 });

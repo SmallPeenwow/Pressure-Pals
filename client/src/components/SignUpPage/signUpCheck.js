@@ -1,6 +1,7 @@
 import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
 import makeSnackbarVisible from '../snackbar.js';
-import inputBorderColorChange from '../inputBorderColorChange.js';
+import inputBorderColorChangeRed from '../inputBorderColorChangeRed.js';
+import passwordGreaterCheck from './passwordGreaterCheck.js';
 
 const signUpCheck = async (name, email, cellNumber, password, confirmPassword, snackbar) => {
 	if (
@@ -11,27 +12,31 @@ const signUpCheck = async (name, email, cellNumber, password, confirmPassword, s
 		isEmptyOrWhitespace(cellNumber.value)
 	) {
 		makeSnackbarVisible('Please fill in the required fields', snackbar);
-		inputBorderColorChange(name);
-		inputBorderColorChange(email);
-		inputBorderColorChange(cellNumber);
-		inputBorderColorChange(password);
-		inputBorderColorChange(confirmPassword);
+		inputBorderColorChangeRed(name);
+		inputBorderColorChangeRed(email);
+		inputBorderColorChangeRed(cellNumber);
+		inputBorderColorChangeRed(password);
+		inputBorderColorChangeRed(confirmPassword);
 	} else if (isEmptyOrWhitespace(name.value)) {
 		makeSnackbarVisible('Please enter in your Name.', snackbar);
-		inputBorderColorChange(name);
+		inputBorderColorChangeRed(name);
 	} else if (isEmptyOrWhitespace(email.value)) {
 		makeSnackbarVisible('Please enter in your Email.', snackbar);
-		inputBorderColorChange(email);
+		inputBorderColorChangeRed(email);
 	} else if (isEmptyOrWhitespace(cellNumber.value)) {
 		makeSnackbarVisible('Please enter in your Cell Number.', snackbar);
-		inputBorderColorChange(cellNumber);
+		inputBorderColorChangeRed(cellNumber);
 	} else if (isEmptyOrWhitespace(password.value)) {
 		makeSnackbarVisible('Please enter in your Password.', snackbar);
-		inputBorderColorChange(password);
+		inputBorderColorChangeRed(password);
 	} else if (isEmptyOrWhitespace(confirmPassword.value)) {
 		makeSnackbarVisible('Please enter in your Confirm Password.', snackbar);
-		inputBorderColorChange(confirmPassword);
+		inputBorderColorChangeRed(confirmPassword);
+	} else {
+		passwordGreaterCheck(password, confirmPassword, snackbar);
 	}
+
+	// return 0;
 };
 
 export default signUpCheck;

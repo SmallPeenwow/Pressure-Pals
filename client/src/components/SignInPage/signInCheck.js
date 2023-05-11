@@ -1,6 +1,6 @@
 import makeSnackbarVisible from '../snackbar.js';
 import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
-import inputBorderColorChange from '../inputBorderColorChange.js';
+import inputBorderColorChangeRed from '../inputBorderColorChangeRed.js';
 
 const snackbar = document.querySelector('#snack-bar');
 
@@ -14,11 +14,11 @@ signInForm.addEventListener('submit', async (e) => {
 
 	if (isEmptyOrWhitespace(emailValue.value)) {
 		makeSnackbarVisible('Please enter in your Email.', snackbar);
-		inputBorderColorChange(emailValue);
+		inputBorderColorChangeRed(emailValue);
 		return;
 	} else if (isEmptyOrWhitespace(passwordValue.value)) {
 		makeSnackbarVisible('Please enter in your Password.', snackbar);
-		inputBorderColorChange(passwordValue);
+		inputBorderColorChangeRed(passwordValue);
 	} else {
 		access_level = await getServerResponse();
 
