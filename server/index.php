@@ -31,10 +31,8 @@
     }
 
     function check_user_login($email, $client_password){
-    
         $isUser = false;
-    
-        // Make connection global
+
         $host = 'localhost';
         $username = 'root';
         $password = 'password';
@@ -44,8 +42,8 @@
     
         if (mysqli_connect_errno()){
             die("Connection error: " . mysqli_connect_errno());
-        }
-    
+        } 
+
         $sql = "SELECT * FROM pressure_pal_client";
     
         $result = mysqli_query($conn, $sql);

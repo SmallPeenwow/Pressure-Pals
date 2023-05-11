@@ -76,8 +76,8 @@ form {
 	outline: none;
 }
 
-#name::placeholder {
-	color: #dfdfdf;
+input::placeholder {
+	color: #d5d5d5;
 }
 
 .submit-input {

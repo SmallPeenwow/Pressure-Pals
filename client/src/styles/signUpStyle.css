@@ -155,6 +155,10 @@ input:focus {
 	font-weight: bold;
 }
 
+input::placeholder {
+	color: #d5d5d5;
+}
+
 /* Label Sections */
 
 label {

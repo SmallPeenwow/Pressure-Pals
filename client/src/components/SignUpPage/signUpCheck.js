@@ -2,6 +2,7 @@ import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
 import makeSnackbarVisible from '../snackbar.js';
 import inputBorderColorChangeRed from '../inputBorderColorChangeRed.js';
 import passwordGreaterCheck from './passwordGreaterCheck.js';
+import emailValidation from './emailValidation.js';
 
 const signUpCheck = async (name, email, cellNumber, password, confirmPassword, snackbar) => {
 	if (
@@ -22,6 +23,9 @@ const signUpCheck = async (name, email, cellNumber, password, confirmPassword, s
 		inputBorderColorChangeRed(name);
 	} else if (isEmptyOrWhitespace(email.value)) {
 		makeSnackbarVisible('Please enter in your Email.', snackbar);
+		inputBorderColorChangeRed(email);
+	} else if (!emailValidation(email.value)) {
+		makeSnackbarVisible('Enter in Email correctly. Eg: example@example.com', snackbar);
 		inputBorderColorChangeRed(email);
 	} else if (isEmptyOrWhitespace(cellNumber.value)) {
 		makeSnackbarVisible('Please enter in your Cell Number.', snackbar);
