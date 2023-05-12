@@ -34,8 +34,8 @@ signInForm.addEventListener('submit', async (e) => {
 
 const getServerResponse = async () => {
 	const dataSubmit = new FormData();
-	dataSubmit.append('email', emailValue.value);
-	dataSubmit.append('password', passwordValue.value);
+	dataSubmit.append('login-email', emailValue.value);
+	dataSubmit.append('login-password', passwordValue.value);
 
 	return fetch('http://localhost:3000/server/index.php', {
 		method: 'POST',

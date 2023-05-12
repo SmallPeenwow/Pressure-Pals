@@ -24,10 +24,35 @@
         exit(0);
     }
     
-    if (isset($_POST['email']) && $_POST['password']) {
-        $email = $_POST['email'];
-        $client_password = $_POST['password'];
+    if (isset($_POST['login-email']) && isset($_POST['login-password'])) {
+        $email = $_POST['login-email'];
+        $client_password = $_POST['login-password'];
+
         check_user_login($email, $client_password);
+    }
+
+    // isset($_POST['name']) && 
+    // $_POST['surname'] && 
+    // isset($_POST['email']) &&
+    // isset($_POST['cell-number']) && 
+    // isset($_POST['password']) &&
+    // $_POST['address'] &&
+    // $_POST['suburb']
+    if (
+        isset($_POST['name']) && 
+        isset($_POST['email']) &&
+        isset($_POST['cell-number']) && 
+        isset($_POST['password'])
+    ){
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $email = $_POST['email'];
+        $cellNumber = $_POST['cell-number'];
+        $password = $_POST['password'];
+        $address = $_POST['address'];
+        $suburb = $_POST['suburb'];
+
+        add_user($name, $surname, $email, $cellNumber, $password, $address, $suburb);
     }
 
     function check_user_login($email, $client_password){
@@ -61,6 +86,53 @@
             echo json_encode("no user");
         }
     
+        mysqli_close($conn);
+
+        return;
+    }
+
+    function add_user($name, $surname, $email, $cellNumber, $password, $address, $suburb){
+        // Errors also go through to make id which should not be allowed
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+    
+        if (mysqli_connect_errno()){
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "INSERT INTO pressure_pal_client (client_name, client_surname, email, phone_number, client_password, address, suburb) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        $stmt = mysqli_stmt_init($conn);
+
+        if (!mysqli_stmt_prepare($stmt, $sql)){
+            die(mysqli_error($conn));
+        }
+
+        mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $password, $address, $suburb);
+
+        //TODO: validation check for duplicate email return 
+        mysqli_stmt_execute($stmt);
+        // if(!mysqli_stmt_execute($stmt)){
+        //     echo json_encode('failed');
+        // }
+
+
+        $sqlSelect = "SELECT * FROM pressure_pal_client";
+
+        $result = mysqli_query($conn, $sqlSelect);
+
+        while ($row = mysqli_fetch_array($result)){
+            if ($email == $row['email'] && $password == $row['client_password']){
+                echo json_encode($row['client_id']);
+    
+                return;
+            }
+        }
+
         mysqli_close($conn);
 
         return;
