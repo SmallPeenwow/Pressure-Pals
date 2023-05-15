@@ -6,10 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../src/styles/userHomeStyle.css">
+    <link rel="stylesheet" href="../src/styles/menuItemsStyle.css">
     <script type="module" defer src="../src/components/UserHome/dropDownList.js"></script>
+    <script type="module" defer src="../src/components/UserHome/menuIconToggle.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
+      
+    <div id="menu-items" class="hidden">            
+        <button id="log-out">
+            <span class="material-symbols-outlined">
+                logout
+            </span>
+            Log Out
+        </button>
+        
+        <button id="delete-account">
+            <span class="material-symbols-outlined">
+                person_remove
+            </span>
+            Delete Account
+        </button>            
+    </div>
+    
     <header>
         <span id="menu" class="material-symbols-outlined">
             menu
