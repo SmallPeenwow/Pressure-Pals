@@ -1,4 +1,5 @@
 import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
+import makeSnackbarVisible from '../snackbar.js';
 import signUpCheck from './signUpCheck.js';
 
 const signUpForm = document.querySelector('#sign-up');
@@ -23,10 +24,23 @@ signUpForm.addEventListener('submit', async (e) => {
 		let serverResponse = await submitUserDetails();
 		console.log(serverResponse);
 
-		// window.open('./adminHome.html', '_parent');
-		//TODO make cookie for id
+		if (serverResponse === 'full') {
+			makeSnackbarVisible('Server is at full capacity', snackBar);
+		} else if (serverResponse === 'failed') {
+			makeSnackbarVisible('Account failed to process', snackBar);
+		} else {
+			const userArray = [serverResponse, address.value, suburb.value];
+			localStorage.setItem('pressure-pals-user', JSON.stringify(userArray));
+			makeSnackbarVisible('Account was created successfully', snackBar);
+
+			setTimeout(sendUserToPage, 7400);
+		}
 	}
 });
+
+const sendUserToPage = () => {
+	window.open('./userHome.html', '_parent');
+};
 
 const submitUserDetails = async () => {
 	const dataSubmit = new FormData();

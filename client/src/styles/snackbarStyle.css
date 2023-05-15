@@ -4,7 +4,7 @@
 	visibility: hidden;
 	min-width: 25rem;
 	left: 50%;
-	top: 15%;
+	top: 13%;
 	transform: translate(-50%, -50%);
 	z-index: 10;
 	display: flex;
@@ -29,14 +29,14 @@
 		opacity: 0;
 	}
 	to {
-		top: 15%;
+		top: 13%;
 		opacity: 1;
 	}
 }
 
 @keyframes fadeOut {
 	from {
-		top: 15%;
+		top: 13%;
 		opacity: 1;
 	}
 	to {

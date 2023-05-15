@@ -31,13 +31,6 @@
         check_user_login($email, $client_password);
     }
 
-    // isset($_POST['name']) && 
-    // $_POST['surname'] && 
-    // isset($_POST['email']) &&
-    // isset($_POST['cell-number']) && 
-    // isset($_POST['password']) &&
-    // $_POST['address'] &&
-    // $_POST['suburb']
     if (
         isset($_POST['name']) && 
         isset($_POST['email']) &&
@@ -99,42 +92,70 @@
         $dbname = 'pressure_pals';
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        $rowCount = 0;
     
         if (mysqli_connect_errno()){
             die("Connection error: " . mysqli_connect_errno());
         } 
 
-        $sql = "INSERT INTO pressure_pal_client (client_name, client_surname, email, phone_number, client_password, address, suburb) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $sql2 = "SELECT * FROM pressure_pal_client";
 
-        $stmt = mysqli_stmt_init($conn);
-
-        if (!mysqli_stmt_prepare($stmt, $sql)){
-            die(mysqli_error($conn));
+       
+        if ($result = mysqli_query($conn, $sql2)) {
+            $rowCount = mysqli_num_rows($result);
         }
 
-        mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $password, $address, $suburb);
-
-        //TODO: validation check for duplicate email return 
-        mysqli_stmt_execute($stmt);
-        // if(!mysqli_stmt_execute($stmt)){
-        //     echo json_encode('failed');
-        // }
-
-
-        $sqlSelect = "SELECT * FROM pressure_pal_client";
-
-        $result = mysqli_query($conn, $sqlSelect);
-
-        while ($row = mysqli_fetch_array($result)){
-            if ($email == $row['email'] && $password == $row['client_password']){
-                echo json_encode($row['client_id']);
-    
+        // If user count is less than 7 it will add user
+        if ($rowCount < 7){
+            // TODO: test this out still
+            mysqli_begin_transaction($conn);
+            try {
+                // $conn->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
+           
+                $sql = "INSERT INTO pressure_pal_client (client_name, client_surname, email, phone_number, client_password, address, suburb) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        
+                $stmt = mysqli_stmt_init($conn);
+        
+                if (!mysqli_stmt_prepare($stmt, $sql)){
+                    die(mysqli_error($conn));
+                }
+        
+                mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $password, $address, $suburb);
+        
+                //Will still process duplicate record and next one will still increase
+                mysqli_stmt_execute($stmt);
+                // if(!mysqli_stmt_execute($stmt)){
+                //     echo json_encode('failed');
+                // }
+                // $conn->commit();
+                mysqli_commit($conn);
+            } catch (\Throwable $e){
+                // $conn->rollback();
+                mysqli_rollback($conn);
+                echo json_encode('failed');
                 return;
             }
+    
+    
+            $sqlSelect = "SELECT * FROM pressure_pal_client";
+    
+            $result = mysqli_query($conn, $sqlSelect);
+    
+            while ($row = mysqli_fetch_array($result)){
+                if ($email == $row['email'] && $password == $row['client_password']){
+                    echo json_encode($row['client_id']);
+        
+                    return;
+                }
+            }
+    
+        } else {
+            
+            echo json_encode('full');
         }
-
+        
         mysqli_close($conn);
-
         return;
     }
 
