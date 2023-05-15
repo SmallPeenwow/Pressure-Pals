@@ -110,6 +110,15 @@ body {
 	cursor: default;
 }
 
+.right-offer-container ul {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	padding-left: 30px;
+	padding-right: 10px;
+	gap: 10px;
+}
+
 /* circle background  */
 
 .circle-group-bottom-left,
