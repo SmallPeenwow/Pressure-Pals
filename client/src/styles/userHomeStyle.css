@@ -63,7 +63,8 @@ main {
 	position: relative;
 }
 
-.button-container button {
+.button-container button,
+.button-date {
 	background-color: var(--main-color);
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-15);
@@ -79,14 +80,14 @@ main {
 	cursor: pointer;
 }
 
-.button-container button:hover {
+.button-container button:hover,
+.button-date:hover {
 	background-color: var(--secondary-color);
 	color: var(--main-color);
 }
 
-.button-date span {
-	text-shadow: none;
-	font-size: 52px;
+.button-date:focus-visible {
+	outline: none;
 }
 
 .button-date {

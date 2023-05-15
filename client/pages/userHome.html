@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet" href="../src/styles/userHomeStyle.css">
+    <script type="module" defer src="../src/components/UserHome/dropDownList.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
@@ -20,12 +21,7 @@
         <div class="button-container">
             <button class="refresh">Refresh</button>
             <button type="button">Check Bookings</button>
-            <button class="button-date">
-                <p>June</p>
-                <span class="material-symbols-outlined">
-                    arrow_drop_down
-                </span>
-            </button>
+            <select id="month-list" class="button-date"></select>
         </div>
         <div class="container">
             <div class="table-container">
