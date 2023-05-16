@@ -1,16 +1,7 @@
 import getUserLocalStorage from '../getUserFromLocalStorage.js';
+import basicClearStorageAndSendHomePage from './basicClearStorageAndSendHomePage.js';
 
-const logOut = document.querySelector('#log-out');
 const deleteAccount = document.querySelector('#delete-account');
-
-logOut.addEventListener('click', (e) => {
-	e.preventDefault();
-	let response = confirm('Do you want to Log Out?');
-
-	if (response) {
-		basicClearStorageAndSendHomePage();
-	}
-});
 
 deleteAccount.addEventListener('click', async (e) => {
 	e.preventDefault();
@@ -23,11 +14,6 @@ deleteAccount.addEventListener('click', async (e) => {
 		await basicClearStorageAndSendHomePage();
 	}
 });
-
-const basicClearStorageAndSendHomePage = async () => {
-	localStorage.clear('pressure-pals-user');
-	window.open('/client/landingPage.html', '_parent');
-};
 
 const deleteAccountServer = async (id) => {
 	const dataSubmit = new FormData();
