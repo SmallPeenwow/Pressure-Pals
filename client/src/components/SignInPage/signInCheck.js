@@ -11,9 +11,11 @@ const passwordValue = document.querySelector('#password');
 window.onload = async () => {
 	let userDetails = getUserLocalStorage();
 
-	let response = await userPreviousLogin(userDetails[0]);
+	if (userDetails !== 'null') {
+		let response = await userPreviousLogin(userDetails[0]);
 
-	userAccessLevel(response.access_level);
+		userAccessLevel(response.access_level);
+	}
 };
 
 signInForm.addEventListener('submit', async (e) => {
@@ -28,8 +30,11 @@ signInForm.addEventListener('submit', async (e) => {
 		makeSnackbarVisible('Please enter in your Password.', snackbar);
 		inputBorderColorChangeRed(passwordValue);
 	} else {
-		access_level = await getServerResponse();
+		let userDetails = await getServerResponse();
 
+		await addUserDetailsToLocalStorage(userDetails[1], userDetails[2], userDetails[3]);
+
+		access_level = userDetails[0];
 		userAccessLevel(access_level);
 	}
 });
@@ -42,6 +47,11 @@ const userAccessLevel = (access_level) => {
 	} else if (access_level === 'no user') {
 		makeSnackbarVisible('Check that your Email and Password is correctly', snackbar);
 	}
+};
+
+const addUserDetailsToLocalStorage = async (id, address, suburb) => {
+	const userArray = [id, address, suburb];
+	localStorage.setItem('pressure-pals-user', userArray);
 };
 
 const getServerResponse = async () => {

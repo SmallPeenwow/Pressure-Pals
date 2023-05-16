@@ -53,8 +53,7 @@
     // For already Logged In
     if (isset($_POST['onload-login-id'])){
         $client_id_onload = $_POST['onload-login-id'];
-
-        
+      
         $host = 'localhost';
         $username = 'root';
         $password = 'password';
@@ -71,6 +70,35 @@
         $result = mysqli_query($conn, $sql);
 
         echo json_encode($row = mysqli_fetch_array($result));
+
+        mysqli_close($conn);
+
+        return;
+    }
+
+    // For Delete Account
+    if (isset($_POST['delete-account-user-id'])){
+        $client_id_delete = $_POST['delete-account-user-id'];
+
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno()){
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "DELETE FROM pressure_pal_client WHERE client_id = $client_id_delete";
+
+       if (mysqli_query($conn, $sql)){
+        echo json_encode("Record deleted");
+       } else {
+        echo json_encode("Error deleting record");
+       }
+
 
         mysqli_close($conn);
 
@@ -98,7 +126,9 @@
         while ($row = mysqli_fetch_array($result)){
             if ($email == $row['email'] && $client_password == $row['client_password']){
                 $isUser = true;
-                echo json_encode($row['access_level']);
+
+                $userDetails = array($row['access_level'], $row['client_id'], $row['address'], $row['suburb']);
+                echo json_encode($userDetails);
     
                 return;
             }

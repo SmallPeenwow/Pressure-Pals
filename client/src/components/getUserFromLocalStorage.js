@@ -1,8 +1,13 @@
 const getUserLocalStorage = () => {
 	let id = localStorage.getItem('pressure-pals-user');
-	let array = id.split(',');
 
-	return array;
+	try {
+		let array = id.split(',');
+
+		return array;
+	} catch {
+		return 'null';
+	}
 };
 
 export default getUserLocalStorage;
