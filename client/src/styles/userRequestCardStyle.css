@@ -5,6 +5,7 @@
 	flex-direction: column;
 	align-items: flex-start;
 	justify-content: space-between;
+	background-color: var(--secondary-color);
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-5);
 	padding: 5px 10px;

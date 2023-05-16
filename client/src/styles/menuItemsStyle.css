@@ -3,7 +3,7 @@
 #menu-items {
 	background-color: var(--main-color);
 	position: absolute;
-	top: 8.5%;
+	top: 79px;
 	z-index: 5;
 	height: auto;
 	width: 200px;

@@ -44,14 +44,28 @@ header h1 {
 main {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+}
+
+.container {
+	padding-bottom: 20px;
+	height: 83%;
 }
 
 .table-container {
 	width: 95%;
-	height: 640px;
+	height: 100%;
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-5);
 	background-color: var(--secondary-color);
+	padding: 30px 50px 40px 65px;
+}
+
+.inner-table-container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	row-gap: 30px;
+	column-gap: 60px;
 }
 
 .button-container {
@@ -88,4 +102,21 @@ main {
 	display: flex;
 	align-items: center;
 	justify-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+	.inner-table-container {
+		grid-template-columns: repeat(2, 1fr);
+		row-gap: 40px;
+		row-gap: 60px;
+	}
+
+	.table-container {
+		overflow-y: scroll;
+		padding-left: 55px;
+	}
+
+	main {
+		height: 93%;
+	}
 }
