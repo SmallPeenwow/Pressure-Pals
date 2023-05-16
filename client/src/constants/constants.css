@@ -2,6 +2,7 @@
 	--main-color: #0085ff;
 	--secondary-color: #ffffff;
 	--third-color: #000000;
+	--hover-default-color-no-shadow: #ffffffd7;
 
 	--table-time-display-color: #51ade1;
 	--table-date-display-color: #009ff9;
@@ -16,6 +17,8 @@
 
 	--booking-accept-button-color: #46da12;
 	--booking-decline-button-color: #e20a0a;
+	--booking-accept-hover-button-color: #44ff00;
+	--booking-decline-hover-button-color: #c40010;
 
 	--admin-booking-not-complete-background-color: #ffffff;
 	--admin-booking-in-progress-background-color: #f0da10;

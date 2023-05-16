@@ -3,7 +3,7 @@
 #menu-items {
 	background-color: var(--main-color);
 	position: absolute;
-	top: 79px;
+	top: 8.5%;
 	z-index: 5;
 	height: auto;
 	width: 200px;
@@ -28,6 +28,6 @@
 }
 
 #menu-items button:hover {
-	background-color: var(--secondary-color);
+	background-color: var(--hover-default-color-no-shadow);
 	color: var(--main-color);
 }
