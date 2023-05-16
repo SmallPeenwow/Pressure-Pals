@@ -27,7 +27,6 @@ const monthListUpdate = () => {
 		monthList.appendChild(option);
 
 		if (i === new Date().getMonth()) {
-			console.log(new Date().getMonth().toString());
 			option.selected = true;
 		}
 	}

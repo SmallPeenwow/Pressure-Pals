@@ -1,12 +1,20 @@
 import makeSnackbarVisible from '../snackbar.js';
 import isEmptyOrWhitespace from '../isEmptyOrWhitespace.js';
 import inputBorderColorChangeRed from '../inputBorderColorChangeRed.js';
+import getUserLocalStorage from '../getUserFromLocalStorage.js';
 
 const snackbar = document.querySelector('#snack-bar');
-
 const signInForm = document.querySelector('#signInForm');
 const emailValue = document.querySelector('#email');
 const passwordValue = document.querySelector('#password');
+
+window.onload = async () => {
+	let userDetails = getUserLocalStorage();
+
+	let response = await userPreviousLogin(userDetails[0]);
+
+	userAccessLevel(response.access_level);
+};
 
 signInForm.addEventListener('submit', async (e) => {
 	e.preventDefault();
@@ -22,20 +30,41 @@ signInForm.addEventListener('submit', async (e) => {
 	} else {
 		access_level = await getServerResponse();
 
-		if (access_level === 'admin') {
-			window.open('./adminHome.html', '_parent');
-		} else if (access_level === 'client') {
-			window.open('./userHome.html', '_parent');
-		} else {
-			makeSnackbarVisible('Check that your Email and Password is correctly', snackbar);
-		}
+		userAccessLevel(access_level);
 	}
 });
+
+const userAccessLevel = (access_level) => {
+	if (access_level === 'admin') {
+		window.open('./adminHome.html', '_parent');
+	} else if (access_level === 'client') {
+		window.open('./userHome.html', '_parent');
+	} else if (access_level === 'no user') {
+		makeSnackbarVisible('Check that your Email and Password is correctly', snackbar);
+	}
+};
 
 const getServerResponse = async () => {
 	const dataSubmit = new FormData();
 	dataSubmit.append('login-email', emailValue.value);
 	dataSubmit.append('login-password', passwordValue.value);
+
+	return fetch('http://localhost:3000/server/index.php', {
+		method: 'POST',
+		body: dataSubmit,
+	})
+		.then((res) => {
+			return res.json();
+		})
+		.then((data) => {
+			return data;
+		})
+		.catch((error) => console.log(error));
+};
+
+const userPreviousLogin = async (id) => {
+	const dataSubmit = new FormData();
+	dataSubmit.append('onload-login-id', id);
 
 	return fetch('http://localhost:3000/server/index.php', {
 		method: 'POST',

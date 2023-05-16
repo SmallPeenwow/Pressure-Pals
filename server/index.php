@@ -24,6 +24,7 @@
         exit(0);
     }
     
+    // For Login
     if (isset($_POST['login-email']) && isset($_POST['login-password'])) {
         $email = $_POST['login-email'];
         $client_password = $_POST['login-password'];
@@ -31,6 +32,7 @@
         check_user_login($email, $client_password);
     }
 
+    // For Create Account
     if (
         isset($_POST['name']) && 
         isset($_POST['email']) &&
@@ -41,11 +43,38 @@
         $surname = $_POST['surname'];
         $email = $_POST['email'];
         $cellNumber = $_POST['cell-number'];
-        $password = $_POST['password'];
+        $client_password = $_POST['password'];
         $address = $_POST['address'];
         $suburb = $_POST['suburb'];
 
-        add_user($name, $surname, $email, $cellNumber, $password, $address, $suburb);
+        add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb);
+    }
+
+    // For already Logged In
+    if (isset($_POST['onload-login-id'])){
+        $client_id_onload = $_POST['onload-login-id'];
+
+        
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno()){
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "SELECT access_level FROM pressure_pal_client WHERE client_id = $client_id_onload";
+
+        $result = mysqli_query($conn, $sql);
+
+        echo json_encode($row = mysqli_fetch_array($result));
+
+        mysqli_close($conn);
+
+        return;
     }
 
     function check_user_login($email, $client_password){
@@ -84,7 +113,7 @@
         return;
     }
 
-    function add_user($name, $surname, $email, $cellNumber, $password, $address, $suburb){
+    function add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb){
         // Errors also go through to make id which should not be allowed
         $host = 'localhost';
         $username = 'root';
@@ -121,7 +150,7 @@
                     die(mysqli_error($conn));
                 }
         
-                mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $password, $address, $suburb);
+                mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $client_password, $address, $suburb);
         
                 //Will still process duplicate record and next one will still increase
                 mysqli_stmt_execute($stmt);
@@ -143,7 +172,7 @@
             $result = mysqli_query($conn, $sqlSelect);
     
             while ($row = mysqli_fetch_array($result)){
-                if ($email == $row['email'] && $password == $row['client_password']){
+                if ($email == $row['email'] && $client_password == $row['client_password']){
                     echo json_encode($row['client_id']);
         
                     return;

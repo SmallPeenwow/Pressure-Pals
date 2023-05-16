@@ -30,7 +30,7 @@ signUpForm.addEventListener('submit', async (e) => {
 			makeSnackbarVisible('Account failed to process', snackBar);
 		} else {
 			const userArray = [serverResponse, address.value, suburb.value];
-			localStorage.setItem('pressure-pals-user', JSON.stringify(userArray));
+			localStorage.setItem('pressure-pals-user', userArray);
 			makeSnackbarVisible('Account was created successfully', snackBar);
 
 			setTimeout(sendUserToPage, 7400);

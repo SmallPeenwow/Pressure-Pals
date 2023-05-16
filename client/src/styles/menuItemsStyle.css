@@ -27,7 +27,7 @@
 	cursor: pointer;
 }
 
-.menu-drop button:hover {
+#menu-items button:hover {
 	background-color: var(--secondary-color);
 	color: var(--main-color);
 }
