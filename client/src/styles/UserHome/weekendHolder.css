@@ -1,0 +1,19 @@
+@import '../../constants/constants.css';
+
+.weekend-date-holders div {
+	background-color: var(--table-date-display-color);
+	border: 1px solid black;
+	border-top: none;
+	width: 150px;
+	height: 40px;
+	font-size: 20px;
+	color: var(--secondary-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: default;
+}
+
+.weekend-date-holders {
+	display: flex;
+}

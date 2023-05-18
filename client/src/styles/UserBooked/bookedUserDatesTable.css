@@ -13,7 +13,6 @@
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-5);
 	background-color: var(--secondary-color);
-	/* padding: 30px 50px 40px 65px; */
 	padding: 20px;
 }
 
@@ -24,11 +23,9 @@
 		column-gap: 30px;
 		justify-items: center;
 	}
-}
 
-@media only screen and (max-width: 1200px) {
 	.table-container-user-booked {
-		overflow-y: scroll;
+		overflow-y: auto;
 	}
 
 	main {
