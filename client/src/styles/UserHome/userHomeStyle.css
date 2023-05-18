@@ -44,21 +44,28 @@ header h1 {
 main {
 	display: flex;
 	flex-direction: column;
+	height: 100%;
+}
+
+.container {
+	padding-bottom: 20px;
+	height: 83%;
 }
 
 .table-container {
-	width: 1400px;
-	height: 640px;
+	width: 95%;
+	height: 100%;
 	box-shadow: var(--default-box-shadow);
 	border-radius: var(--border-radius-5);
 	background-color: var(--secondary-color);
+	padding: 30px 50px 40px 65px;
 }
 
 .button-container {
 	display: flex;
 	justify-content: flex-end;
 	align-items: center;
-	padding: 40px;
+	padding: 40px 50px;
 	gap: 20px;
 	position: relative;
 }
@@ -106,4 +113,20 @@ main {
 	position: absolute;
 	width: 170px !important;
 	left: 30px;
+}
+
+#back-button {
+	position: absolute;
+	left: 2%;
+	width: 230px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.table-container {
+		overflow-y: scroll;
+	}
+
+	main {
+		height: 93%;
+	}
 }
