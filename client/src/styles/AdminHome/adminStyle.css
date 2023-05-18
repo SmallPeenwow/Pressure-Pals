@@ -1,4 +1,4 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
 *,
 *::before,
@@ -99,7 +99,7 @@ main {
 
 @media only screen and (max-width: 1200px) {
 	.table-container {
-		overflow-y: scroll;
+		overflow-y: auto;
 		padding-left: 55px;
 	}
 

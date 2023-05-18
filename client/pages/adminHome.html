@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="../src/styles/AdminHome/userRequestCardTable.css">
     <script type="module" defer src="../src/components/Menu/menuIconToggle.js"></script>
     <script type="module" defer src="../src/components/Menu/logOut.js"></script>
+    <script type="module" defer src="../src/components/AdminHome/goToDatesBooked.js"></script>
+    <script type="module" defer src="../src/components/AdminHome/onloadFetchPendingRequest.js"></script>
+    <script type="module" defer src="../src/components/AdminHome/refreshButtonAction.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
@@ -33,177 +36,25 @@
 
     <main>
         <div class="button-container">
-            <button class="refresh">Refresh</button>
-            <button type="button">Check Bookings</button>
+            <button id="refresh-action" class="refresh">Refresh</button>
+            <button id="check-bookings-button" type="button">Check Bookings</button>
         </div>
         <div class="container">
             <div class="table-container">
                 <div class="inner-table-container-request-cards">
 
                     <div class="user-request-card">
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
-                        </div>
-    
-                        <div class="name-card-container default-container">
-                            <h4>Name:</h4>
-                            <p id="client-name">Joe</p>
-                        </div>
-    
-                        <div class="surname-card-container default-container">
-                            <h4>Surname:</h4>
-                            <p id="client-surname">Dirt</p>
-                        </div>
-    
-                        <div class="cell-number-card-container default-container">
-                            <h4>Cell Number:</h4>
-                            <p id="client-cell-number">089 145 6789</p>
-                        </div>
-    
-                        <div class="address-card-container default-container">
-                            <h4>Address:</h4>
-                            <p id="client-address">1 ChestNut Rd Nahoon</p>
-                        </div>
-    
-                        <div class="button-card-container">
-                            <button id="accept">Accept</button>
-                            <button id="decline">Decline</button>
-                        </div>
-                    </div>
-                    <div class="user-request-card">
-    
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
-                        </div>
-    
-                        <div class="name-card-container default-container">
-                            <h4>Name:</h4>
-                            <p id="client-name">Joe</p>
-                        </div>
-    
-                        <div class="surname-card-container default-container">
-                            <h4>Surname:</h4>
-                            <p id="client-surname">Dirt</p>
-                        </div>
-    
-                        <div class="cell-number-card-container default-container">
-                            <h4>Cell Number:</h4>
-                            <p id="client-cell-number">089 145 6789</p>
-                        </div>
-    
-                        <div class="address-card-container default-container">
-                            <h4>Address:</h4>
-                            <p id="client-address">1 ChestNut Rd Nahoon</p>
-                        </div>
-    
-                        <div class="button-card-container">
-                            <button id="accept">Accept</button>
-                            <button id="decline">Decline</button>
-                        </div>
-                    </div>
-                    <div class="user-request-card">
-    
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
-                        </div>
-    
-                        <div class="name-card-container default-container">
-                            <h4>Name:</h4>
-                            <p id="client-name">Joe</p>
-                        </div>
-    
-                        <div class="surname-card-container default-container">
-                            <h4>Surname:</h4>
-                            <p id="client-surname">Dirt</p>
-                        </div>
-    
-                        <div class="cell-number-card-container default-container">
-                            <h4>Cell Number:</h4>
-                            <p id="client-cell-number">089 145 6789</p>
-                        </div>
-    
-                        <div class="address-card-container default-container">
-                            <h4>Address:</h4>
-                            <p id="client-address">1 ChestNut Rd Nahoon</p>
-                        </div>
-    
-                        <div class="button-card-container">
-                            <button id="accept">Accept</button>
-                            <button id="decline">Decline</button>
-                        </div>
-                    </div>
-                    <div class="user-request-card">
-    
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
-                        </div>
-    
-                        <div class="name-card-container default-container">
-                            <h4>Name:</h4>
-                            <p id="client-name">Joe</p>
-                        </div>
-    
-                        <div class="surname-card-container default-container">
-                            <h4>Surname:</h4>
-                            <p id="client-surname">Dirt</p>
-                        </div>
-    
-                        <div class="cell-number-card-container default-container">
-                            <h4>Cell Number:</h4>
-                            <p id="client-cell-number">089 145 6789</p>
-                        </div>
-    
-                        <div class="address-card-container default-container">
-                            <h4>Address:</h4>
-                            <p id="client-address">1 ChestNut Rd Nahoon</p>
-                        </div>
-    
-                        <div class="button-card-container">
-                            <button id="accept">Accept</button>
-                            <button id="decline">Decline</button>
-                        </div>
-                    </div>
-                    <div class="user-request-card">
-    
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
-                        </div>
-    
-                        <div class="name-card-container default-container">
-                            <h4>Name:</h4>
-                            <p id="client-name">Joe</p>
-                        </div>
-    
-                        <div class="surname-card-container default-container">
-                            <h4>Surname:</h4>
-                            <p id="client-surname">Dirt</p>
-                        </div>
-    
-                        <div class="cell-number-card-container default-container">
-                            <h4>Cell Number:</h4>
-                            <p id="client-cell-number">089 145 6789</p>
-                        </div>
-    
-                        <div class="address-card-container default-container">
-                            <h4>Address:</h4>
-                            <p id="client-address">1 ChestNut Rd Nahoon</p>
-                        </div>
-    
-                        <div class="button-card-container">
-                            <button id="accept">Accept</button>
-                            <button id="decline">Decline</button>
-                        </div>
-                    </div>
-                    <div class="user-request-card">
-    
-                        <div class="date-card-container">
-                            <p id="date-request-card">1 Saturday April</p>
-                            <p id="time-request-card">8:00 AM</p>
+                        <div class="date-service-container">
+                            <div class="date-card-container">
+                                <p id="date-request-card">1 Saturday April</p>
+                                <p id="time-request-card">8:00 AM</p>
+                            </div>
+
+                            <div class="service-type-container">
+                                <h4>Service Type:</h4>
+                                <p id="service-type">Wall</p>
+                            </div>
+
                         </div>
     
                         <div class="name-card-container default-container">

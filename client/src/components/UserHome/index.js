@@ -5,7 +5,7 @@ import removeDivDateHolders from './removeDivDateHolders.js';
 const monthList = document.querySelector('#month-list');
 const dateHolderParent = document.querySelector('#date-holders-parent');
 
-export const monthNames = [
+const monthNames = [
 	'January',
 	'February',
 	'March',

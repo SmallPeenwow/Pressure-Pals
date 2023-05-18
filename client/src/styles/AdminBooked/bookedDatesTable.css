@@ -1,4 +1,4 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
 .inner-table-container-booked-dates {
 	display: grid;

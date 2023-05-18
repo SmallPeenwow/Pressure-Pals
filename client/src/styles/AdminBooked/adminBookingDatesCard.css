@@ -1,4 +1,4 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
 .not-completed {
 	background-color: var(--admin-booking-not-complete-background-color);

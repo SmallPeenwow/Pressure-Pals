@@ -1,7 +1,8 @@
 <?php
 
     // Allow from any origin
-    if (isset($_SERVER['HTTP_ORIGIN'])) {
+    if (isset($_SERVER['HTTP_ORIGIN'])) 
+    {
         // Decide if the origin in $_SERVER['HTTP_ORIGIN'] is one
         // you want to allow, and if so:
         header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
@@ -10,14 +11,17 @@
     }
 
     // Access-Control headers are received during OPTIONS requests
-    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') 
+    {
         
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD'])){
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+        {
             // may also be using PUT, PATCH, HEAD etc
             header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
         }
         
-        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS'])){
+        if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+        {
             header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
         }
     
@@ -25,7 +29,8 @@
     }
     
     // For Login
-    if (isset($_POST['login-email']) && isset($_POST['login-password'])) {
+    if (isset($_POST['login-email']) && isset($_POST['login-password'])) 
+    {
         $email = $_POST['login-email'];
         $client_password = $_POST['login-password'];
 
@@ -50,8 +55,65 @@
         add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb);
     }
 
+    // For fetching pending requests for Admin
+    if (isset($_POST['admin-pending-requests']))
+    {
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $final_array_send = [];
+
+        $query = "SELECT * FROM pressure_pals_booking";
+
+        $result = mysqli_query($conn, $query);
+    
+        while ($row = mysqli_fetch_array($result))
+        {
+            if ($row['action_level'] == 'pending')
+            {
+                $fetch_array = [];
+
+                array_push($fetch_array, $row['service_type']);
+                array_push($fetch_array, $row['date_time']);
+                array_push($fetch_array, $row['booking_address']);
+                array_push($fetch_array, $row['suburb']);
+                array_push($fetch_array, $row['client_id']);
+
+                $client_id_fetch = $row['client_id'];
+
+                $query_two = "SELECT * FROM pressure_pal_client WHERE client_id = $client_id_fetch";
+
+                $result_two = mysqli_query($conn, $query_two);
+
+                $row2 = mysqli_fetch_array($result_two);
+
+                array_push($fetch_array, $row2['client_name']);
+                array_push($fetch_array, $row2['client_surname']);
+                array_push($fetch_array, $row2['phone_number']);
+
+                array_push($final_array_send, $fetch_array);
+            }
+        }
+
+        echo json_encode($final_array_send);
+
+        mysqli_close($conn);
+
+        return;
+    }
+
     // For already Logged In
-    if (isset($_POST['onload-login-id'])){
+    if (isset($_POST['onload-login-id']))
+    {
         $client_id_onload = $_POST['onload-login-id'];
       
         $host = 'localhost';
@@ -61,7 +123,8 @@
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
-        if (mysqli_connect_errno()){
+        if (mysqli_connect_errno())
+        {
             die("Connection error: " . mysqli_connect_errno());
         } 
 
@@ -87,13 +150,14 @@
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
-        if (mysqli_connect_errno()){
+        if (mysqli_connect_errno())
+        {
             die("Connection error: " . mysqli_connect_errno());
         } 
 
         $sql = "DELETE FROM pressure_pal_client WHERE client_id = $client_id_delete";
 
-       if (mysqli_query($conn, $sql)){
+       if (mysqli_query($conn, $sql)) {
         echo json_encode("Record deleted");
        } else {
         echo json_encode("Error deleting record");
@@ -105,7 +169,8 @@
         return;
     }
 
-    function check_user_login($email, $client_password){
+    function check_user_login($email, $client_password)
+    {
         $isUser = false;
 
         $host = 'localhost';
@@ -115,7 +180,8 @@
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
     
-        if (mysqli_connect_errno()){
+        if (mysqli_connect_errno())
+        {
             die("Connection error: " . mysqli_connect_errno());
         } 
 

@@ -1,4 +1,4 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
 .user-request-card {
 	display: flex;
@@ -42,9 +42,20 @@
 .date-card-container {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
 	padding: 10px 25px 0px 0px;
 	font-size: 18px;
+}
+
+.date-service-container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 15px;
+}
+
+.service-type-container {
+	display: flex;
+	gap: 10px;
 }
 
 #accept {
