@@ -1,13 +1,13 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
-.inner-table-container-user-booked-dates {
+.inner-table-container-user-booking-dates {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	row-gap: 40px;
 	column-gap: 40px;
 }
 
-.table-container-user-booked {
+.table-container-user-booking {
 	width: 95%;
 	height: 100%;
 	box-shadow: var(--default-box-shadow);
@@ -17,14 +17,14 @@
 }
 
 @media only screen and (max-width: 1200px) {
-	.inner-table-container-user-booked-dates {
+	.inner-table-container-user-booking-dates {
 		grid-template-columns: repeat(2, 1fr);
 		row-gap: 40px;
 		column-gap: 30px;
 		justify-items: center;
 	}
 
-	.table-container-user-booked {
+	.table-container-user-booking {
 		overflow-y: auto;
 	}
 

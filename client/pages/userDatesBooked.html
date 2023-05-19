@@ -5,17 +5,22 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../src/styles/snackbarStyle.css">
     <link rel="stylesheet" href="../src/styles/menuItemsStyle.css">
     <link rel="stylesheet" href="../src/styles/UserHome/userHomeStyle.css">
     <link rel="stylesheet" href="../src/styles/UserBooked/userBookedDatesCard.css">
     <link rel="stylesheet" href="../src/styles/UserBooked/bookedUserDatesTable.css">
 
+    <script type="module" defer src="../src/components/UserDates/onloadFetchUserBookings.js"></script>
     <script type="module" defer src="../src/components/Menu/menuIconToggle.js"></script>
     <script type="module" defer src="../src/components/Menu/logOut.js"></script>
     <script type="module" defer src="../src/components/Menu/deleteAccount.js"></script>
+    <script type="module" defer src="../src/components/Button/backButton.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
+
+    <div id="snack-bar"></div>
 
     <div id="menu-items" class="hidden">            
         <button id="log-out">
@@ -46,128 +51,8 @@
             <button id="refresh-button" type="button">Refresh</button>
         </div>
         <div class="container">
-            <div class="table-container-user-booked">
-                <div class="inner-table-container-user-booked-dates">
-
-                    <div id="user-booked-dates" class="declined">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Declined</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="pending">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Pending</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
-
-                    <div id="user-booked-dates" class="accepted">
-                        <div class="date-container">
-                            <p id="user-date-booked">1 Saturday April</p>
-                            <p id="user-time-booked">9:00 AM</p>
-                        </div>
-                        <div class="user-status-container">
-                            <p id="user-status-booked-date">Completed</p>
-                        </div>
-                    </div>
+            <div class="table-container-user-booking">
+                <div class="inner-table-container-user-booking-dates">
 
                 </div>
             </div>

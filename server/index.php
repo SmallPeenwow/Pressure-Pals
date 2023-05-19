@@ -143,6 +143,45 @@
         return;
     }
 
+    // For User Booking Retrieval dates
+    if (isset($_POST['user-id-bookings-requests'])) 
+    {
+        $user_id = $_POST['user-id-bookings-requests'];
+        $final_array_all_user_bookings = [];
+
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "SELECT * FROM pressure_pals_booking WHERE client_id = $user_id";
+
+        $result = mysqli_query($conn, $sql);
+
+        while ($row = mysqli_fetch_array($result))
+        {
+            $fetch_array = [];
+
+            array_push($fetch_array, $row['date_time']);
+            array_push($fetch_array, $row['action_level']);
+
+            array_push($final_array_all_user_bookings, $fetch_array);
+        }
+
+        echo json_encode($final_array_all_user_bookings);
+
+        mysqli_close($conn);
+
+        return;
+    }
+
     // For already Logged In
     if (isset($_POST['onload-login-id']))
     {

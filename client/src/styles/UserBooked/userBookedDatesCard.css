@@ -1,4 +1,4 @@
-@import '../constants/constants.css';
+@import '../../constants/constants.css';
 
 .declined {
 	background-color: var(--user-bookings-declined-background-color);
@@ -12,7 +12,7 @@
 	background-color: var(--user-bookings-accepted-background-color);
 }
 
-#user-booked-dates {
+#user-booking-dates {
 	width: 400px;
 	height: 125px;
 	box-shadow: var(--default-box-shadow);
@@ -37,4 +37,5 @@
 	padding: 10px 35px;
 	align-items: flex-end;
 	justify-content: flex-end;
+	text-transform: capitalize;
 }
