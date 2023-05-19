@@ -2,8 +2,6 @@ import createUserRequestCardDiv from './createUserRequestCard.js';
 
 const separateFetchedValues = async (array, parentDiv) => {
 	array.map(async (value) => {
-		console.log(value);
-
 		let dateSeparate = value[2].split(' ');
 		let day =
 			new Date(dateSeparate[0]).getDate() +

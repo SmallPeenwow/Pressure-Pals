@@ -5,7 +5,7 @@ const innerTableContainerRequestCards = document.querySelector('.inner-table-con
 window.onload = async () => {
 	let values = await getPendingRequests();
 
-	separateFetchedValues(values, innerTableContainerRequestCards);
+	await separateFetchedValues(values, innerTableContainerRequestCards);
 };
 
 const getPendingRequests = async () => {
