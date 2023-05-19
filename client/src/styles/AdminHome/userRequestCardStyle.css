@@ -58,20 +58,21 @@
 	gap: 10px;
 }
 
-#accept {
+.accept {
 	background-color: var(--booking-accept-button-color);
 }
 
-#decline {
+.decline {
 	background-color: var(--booking-decline-button-color);
 }
 
-#accept:hover {
+.accept:hover {
 	background-color: var(--booking-accept-hover-button-color);
 	text-shadow: var(--default-text-shadow);
+	color: var(--secondary-color);
 }
 
-#decline:hover {
+.decline:hover {
 	background-color: var(--booking-decline-hover-button-color);
 	text-shadow: var(--default-text-shadow);
 	color: var(--secondary-color);

@@ -1,7 +1,11 @@
+import separateFetchedValues from './separateFetchedValues.js';
+
+const innerTableContainerRequestCards = document.querySelector('.inner-table-container-request-cards');
+
 window.onload = async () => {
 	let values = await getPendingRequests();
 
-	console.log(values);
+	separateFetchedValues(values, innerTableContainerRequestCards);
 };
 
 const getPendingRequests = async () => {

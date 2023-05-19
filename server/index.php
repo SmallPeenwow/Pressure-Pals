@@ -82,6 +82,7 @@
             {
                 $fetch_array = [];
 
+                array_push($fetch_array, $row['booking_id']);
                 array_push($fetch_array, $row['service_type']);
                 array_push($fetch_array, $row['date_time']);
                 array_push($fetch_array, $row['booking_address']);
