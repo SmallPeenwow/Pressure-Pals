@@ -112,6 +112,37 @@
         return;
     }
 
+    // For response action for pending requests
+    if (isset($_POST['admin-action-response-requests-id']) && isset($_POST['admin-action-response-requests-type'])) 
+    {
+        $booking_response_id = $_POST['admin-action-response-requests-id'];
+        $booking_response_type = $_POST['admin-action-response-requests-type'];
+      
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "UPDATE pressure_pals_booking SET action_level = '$booking_response_type' WHERE booking_id = $booking_response_id";
+
+        if (mysqli_query($conn, $sql)) {
+            echo json_encode("Action was successfully.");
+        } else {
+            echo json_encode("Action did not process.");
+        }
+
+        mysqli_close($conn);
+
+        return;
+    }
+
     // For already Logged In
     if (isset($_POST['onload-login-id']))
     {
