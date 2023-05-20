@@ -15,6 +15,7 @@ const snackBar = document.querySelector('#snack-bar');
 
 signUpForm.addEventListener('submit', async (e) => {
 	e.preventDefault();
+
 	let serverResponse = ''; // Used to see if user was added
 	let responseType;
 
@@ -22,7 +23,6 @@ signUpForm.addEventListener('submit', async (e) => {
 
 	if (responseType) {
 		let serverResponse = await submitUserDetails();
-		console.log(serverResponse);
 
 		if (serverResponse === 'full') {
 			makeSnackbarVisible('Server is at full capacity', snackBar);
@@ -47,7 +47,7 @@ const submitUserDetails = async () => {
 	// Might need to change to create-name
 	dataSubmit.append('name', name.value);
 	dataSubmit.append('surname', valueDefault(surname.value));
-	dataSubmit.append('email', email.value);
+	dataSubmit.append('email', email.value.toLowerCase());
 	dataSubmit.append('cell-number', cellNumber.value);
 	dataSubmit.append('password', password.value);
 	dataSubmit.append('address', valueDefault(address.value));

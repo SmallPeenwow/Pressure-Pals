@@ -56,7 +56,7 @@ const addUserDetailsToLocalStorage = async (id, address, suburb) => {
 
 const getServerResponse = async () => {
 	const dataSubmit = new FormData();
-	dataSubmit.append('login-email', emailValue.value);
+	dataSubmit.append('login-email', emailValue.value.toLowerCase());
 	dataSubmit.append('login-password', passwordValue.value);
 
 	return fetch('http://localhost:3000/server/index.php', {
