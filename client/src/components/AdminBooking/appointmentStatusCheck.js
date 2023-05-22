@@ -4,7 +4,7 @@ const appointmentStatusCheck = async (dateCompareValue) => {
 	if (
 		dateCompareValue.getHours() === dateNow.getHours() &&
 		dateCompareValue.getDate() === dateNow.getDate() &&
-		dateCompareValue.getMonth() === dateNow.getMonth
+		dateCompareValue.getMonth() === dateNow.getMonth()
 	) {
 		return 'In Progress...';
 	} else if (dateCompareValue > dateNow) {

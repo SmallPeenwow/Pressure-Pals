@@ -4,9 +4,12 @@ import rightSideBookedDatesCard from './Card/rightSideBookedDatesCard.js';
 import appointmentStatusCheck from './appointmentStatusCheck.js';
 
 const createBookingDatesCard = async (dataBundle, parentDiv) => {
-	dataBundle.map(async (array) => {
+	let inProgressDate = [];
+
+	dataBundle.map(async (array, index) => {
 		let appointmentStatus = await appointmentStatusCheck(new Date(array[0]));
 
+		//if (appointmentStatus !== 'In Progress...') {
 		let bookedDatesCardClassValue =
 			appointmentStatus === 'Completed'
 				? 'completed'
@@ -23,8 +26,6 @@ const createBookingDatesCard = async (dataBundle, parentDiv) => {
 
 		bookedDatesCard.appendChild(leftSideDetails);
 
-		parentDiv.appendChild(bookedDatesCard);
-
 		// TODO: cell phone custom spacing
 		let rightSideDetails = await rightSideBookedDatesCard(
 			array[4],
@@ -35,6 +36,44 @@ const createBookingDatesCard = async (dataBundle, parentDiv) => {
 		);
 
 		bookedDatesCard.appendChild(rightSideDetails);
+
+		if (appointmentStatus !== 'In Progress...') {
+			parentDiv.appendChild(bookedDatesCard);
+		} else {
+			parentDiv.prepend(bookedDatesCard);
+		}
+		//} else {
+		//	inProgressDate = array;
+		//}
+
+		// if (dataBundle.length === index + 1) {
+		// 	const bookedDatesCard = document.createElement('div');
+		// 	bookedDatesCard.setAttribute('id', 'booked-dates-card');
+		// 	bookedDatesCard.setAttribute('class', 'in-progress');
+
+		// 	let dateArray = await separateDateTimeDate(inProgressDate[0]);
+		// 	let leftSideDetails = await leftSideBookedDatesCard(
+		// 		dateArray[0],
+		// 		dateArray[1],
+		// 		inProgressDate[1],
+		// 		inProgressDate[2]
+		// 	);
+
+		// 	bookedDatesCard.appendChild(leftSideDetails);
+
+		// 	// TODO: cell phone custom spacing
+		// 	let rightSideDetails = await rightSideBookedDatesCard(
+		// 		inProgressDate[4],
+		// 		inProgressDate[5] === 'null' ? 'No Surname' : inProgressDate[5],
+		// 		inProgressDate[6],
+		// 		inProgressDate[3],
+		// 		appointmentStatus
+		// 	);
+
+		// 	bookedDatesCard.appendChild(rightSideDetails);
+
+		// 	parentDiv.prepend(bookedDatesCard);
+		// }
 	});
 };
 

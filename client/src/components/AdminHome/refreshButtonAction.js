@@ -1,22 +1,18 @@
 import getPendingRequests from './onloadFetchPendingRequest.js';
 import separateFetchedValues from './separateFetchedValues.js';
 import refreshButtonDisableTimer from '../refreshButtonDisableTimer.js';
+import removeChildrenDivs from '../removeChildrenDivs.js';
 
 const innerTableContainerRequestCards = document.querySelector('.inner-table-container-request-cards');
+const snackbar = document.querySelector('#snack-bar');
 
 const refreshAction = document.querySelector('#refresh-action');
 
 refreshAction.addEventListener('click', async () => {
-	refreshButtonDisableTimer(refreshAction);
+	refreshButtonDisableTimer(refreshAction, snackbar);
 
 	let value = await getPendingRequests();
 
-	await removeChildrenDiv(innerTableContainerRequestCards);
+	await removeChildrenDivs(innerTableContainerRequestCards);
 	await separateFetchedValues(value, innerTableContainerRequestCards);
 });
-
-const removeChildrenDiv = async (parent) => {
-	while (parent.hasChildNodes()) {
-		parent.removeChild(parent.firstChild);
-	}
-};

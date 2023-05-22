@@ -1,7 +1,11 @@
-const refreshButtonDisableTimer = (button) => {
-	disableRefreshButton(button);
+import makeSnackbarVisible from './snackbar.js';
 
-	// Will Need to add put something in snackbar to make this known to user
+let snackBarMessage = 'Refresh Disabled for 10s.';
+
+const refreshButtonDisableTimer = (button, snackBar) => {
+	disableRefreshButton(button);
+	makeSnackbarVisible(snackBarMessage, snackBar);
+
 	setTimeout(() => {
 		button.disabled = false;
 	}, 10000);
