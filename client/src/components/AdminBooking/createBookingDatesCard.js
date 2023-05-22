@@ -28,7 +28,7 @@ const createBookingDatesCard = async (dataBundle, parentDiv) => {
 		// TODO: cell phone custom spacing
 		let rightSideDetails = await rightSideBookedDatesCard(
 			array[4],
-			array[5] === 'null' ? 'No Entry' : array[5],
+			array[5] === 'null' ? 'No Surname' : array[5],
 			array[6],
 			array[3],
 			appointmentStatus
