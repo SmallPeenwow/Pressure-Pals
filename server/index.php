@@ -182,6 +182,66 @@
         return;
     }
 
+    // For Admin bookings Retrieval data
+    if (isset($_POST['admin-booking-request']))
+    {
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $array_values_to_send = [];
+
+        // Get the current date
+        $currentDate = date('Y-m-d');
+
+        // Get the day before the current date
+        $dayBefore = date('Y-m-d', strtotime('-1 day'));
+
+        $query = "SELECT * FROM pressure_pals_booking WHERE action_level = 'accept' AND date_time >= $dayBefore AND date_time >= $currentDate ORDER BY date_time DESC";
+
+        $result = mysqli_query($conn, $query);
+    
+        while ($row = mysqli_fetch_array($result))
+        {
+
+            $fetch_array = [];
+
+            array_push($fetch_array, $row['date_time']);
+            array_push($fetch_array, $row['booking_address']);
+            array_push($fetch_array, $row['suburb']);
+            array_push($fetch_array, $row['service_type']);
+
+            $client_id_fetch = $row['client_id'];
+
+            $query_two = "SELECT * FROM pressure_pal_client WHERE client_id = $client_id_fetch";
+
+            $result_two = mysqli_query($conn, $query_two);
+
+            $row2 = mysqli_fetch_array($result_two);
+
+            array_push($fetch_array, $row2['client_name']);
+            array_push($fetch_array, $row2['client_surname']);
+            array_push($fetch_array, $row2['phone_number']);
+
+            array_push($array_values_to_send, $fetch_array);
+            
+        }
+
+        echo json_encode($array_values_to_send);
+
+        mysqli_close($conn);
+
+        return;
+    }
+
     // For already Logged In
     if (isset($_POST['onload-login-id']))
     {

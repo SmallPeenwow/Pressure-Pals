@@ -68,7 +68,7 @@
 .user-details-tab {
 	display: flex;
 	flex-direction: column;
-	gap: 15px;
+	gap: 10px;
 }
 
 .tab-one {
@@ -78,6 +78,7 @@
 .progress-container {
 	display: flex;
 	justify-content: flex-end;
+	padding-right: 10px;
 }
 
 @media only screen and (max-width: 1200px) {

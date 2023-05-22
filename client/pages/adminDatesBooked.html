@@ -14,6 +14,7 @@
     <script type="module" defer src="../src/components/Menu/menuIconToggle.js"></script>
     <script type="module" defer src="../src/components/Menu/logOut.js"></script>
     <script type="module" defer src="../src/components/Button/backButton.js"></script>
+    <script type="module" defer src="../src/components/AdminBooking/onloadFetchAcceptedBookings.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
@@ -45,111 +46,6 @@
             <div class="table-container">
                 <div class="inner-table-container-booked-dates">
                     
-                    <div id="booked-dates-card" class="not-completed">
-                        <div class="left-side-booked-dates-card">
-                            <div class="date-display-side">
-                                <p id="date">1 Saturday April</p>
-                                <p id="time">8:00 AM</p>
-                            </div>
-                            <div class="address-display-side">
-                                <h4>Address:</h4>
-                                <div class="address-container">
-                                    <p id="address">1 ChestNut Rd</p>
-                                    <p id="suburb">Nahoon</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="right-side-booked-dates-card">
-                            <div class="user-details-display-side">
-                                <div class="user-details-tab tab-one">
-                                    <h4>Name:</h4>
-                                    <h4>Surname:</h4>
-                                    <h4>Cell Number:</h4>
-                                </div>
-                                <div class="user-details-tab tab-two">
-                                    <p id="name">Joe</p>
-                                    <p id="surname">Dirt</p>
-                                    <p id="cell-number">089 145 6789</p>
-                                </div>
-
-                            </div>
-                            <div class="progress-container">
-                                <h3 id="progress-stage">Not Completed</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="booked-dates-card" class="in-progress">
-                        <div class="left-side-booked-dates-card">
-                            <div class="date-display-side">
-                                <p id="date">1 Saturday April</p>
-                                <p id="time">8:00 AM</p>
-                            </div>
-                            <div class="address-display-side">
-                                <h4>Address:</h4>
-                                <div class="address-container">
-                                    <p id="address">1 ChestNut Rd</p>
-                                    <p id="suburb">Nahoon</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="right-side-booked-dates-card">
-                            <div class="user-details-display-side">
-                                <div class="user-details-tab tab-one">
-                                    <h4>Name:</h4>
-                                    <h4>Surname:</h4>
-                                    <h4>Cell Number:</h4>
-                                </div>
-                                <div class="user-details-tab tab-two">
-                                    <p id="name">Joe</p>
-                                    <p id="surname">Dirt</p>
-                                    <p id="cell-number">089 145 6789</p>
-                                </div>
-
-                            </div>
-                            <div class="progress-container">
-                                <h3 id="progress-stage">Not Completed</h3>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="booked-dates-card" class="completed">
-                        <div class="left-side-booked-dates-card">
-                            <div class="date-display-side">
-                                <p id="date">1 Saturday April</p>
-                                <p id="time">8:00 AM</p>
-                            </div>
-                            <div class="address-display-side">
-                                <h4>Address:</h4>
-                                <div class="address-container">
-                                    <p id="address">1 ChestNut Rd</p>
-                                    <p id="suburb">Nahoon</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="right-side-booked-dates-card">
-                            <div class="user-details-display-side">
-                                <div class="user-details-tab tab-one">
-                                    <h4>Name:</h4>
-                                    <h4>Surname:</h4>
-                                    <h4>Cell Number:</h4>
-                                </div>
-                                <div class="user-details-tab tab-two">
-                                    <p id="name">Joe</p>
-                                    <p id="surname">Dirt</p>
-                                    <p id="cell-number">089 145 6789</p>
-                                </div>
-
-                            </div>
-                            <div class="progress-container">
-                                <h3 id="progress-stage">Not Completed</h3>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
