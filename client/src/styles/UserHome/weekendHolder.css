@@ -4,6 +4,7 @@
 	background-color: var(--table-date-display-color);
 	border: 1px solid black;
 	border-top: none;
+	border-left: none;
 	width: 150px;
 	height: 40px;
 	font-size: 20px;
@@ -16,4 +17,8 @@
 
 .weekend-date-holders {
 	display: flex;
+}
+
+.beginner-date-holder {
+	border-left: 1px solid black !important;
 }
