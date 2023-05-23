@@ -13,6 +13,8 @@ const snackBar = document.querySelector('#snack-bar');
 const monthList = document.querySelector('#month-list');
 const serviceType = document.querySelector('#service-type');
 
+//TODO: Must change clicked to close status
+
 dialogButtonCancel.addEventListener('click', (e) => {
 	e.preventDefault();
 
@@ -45,8 +47,13 @@ dialogButtonAccept.addEventListener('click', async (e) => {
 		if (response === 'Not Available') {
 			makeSnackbarVisible('This Slot is already booked.', snackBar);
 		} else {
-			makeSnackbarVisible('Slot was Booked', snackBar);
+			makeSnackbarVisible('Slot was Booked successfully', snackBar);
 			changeDisplayAndSelect();
+
+			let slot = document.querySelector("[id='" + storageId.textContent + "']");
+			slot.innerText = 'Closed';
+
+			slot.setAttribute('class', 'closed');
 		}
 	}
 });

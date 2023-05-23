@@ -22,3 +22,11 @@
 .booking-slots-container div:hover {
 	background-color: #e0e0e0;
 }
+
+.closed {
+	background-color: var(--table-slot-closed-color);
+}
+
+.available {
+	background-color: var(--table-slot-available-color);
+}

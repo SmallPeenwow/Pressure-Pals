@@ -4,6 +4,7 @@ import createBookingSlots from './createBookingSlots.js';
 import removeChildrenDivs from '../removeChildrenDivs.js';
 import refreshButtonDisableTimer from '../refreshButtonDisableTimer.js';
 import removeDivDateHolders from './removeDivDateHolders.js';
+import fetchAndChangeDateString from './fetchAndChangeDateString.js';
 import { monthNames } from './index.js';
 import { timeValues } from './index.js';
 
@@ -19,12 +20,13 @@ refreshButton.addEventListener('click', async () => {
 	refreshButtonDisableTimer(refreshButton, snackBar);
 
 	weekendDays = await getWeekendDates(monthList.options[monthList.selectedIndex].value, monthNames);
+	let dateArrayBooked = await fetchAndChangeDateString();
 	await removeChildrenDivs(bookingSlotsContainer);
 	await removePreviousDays();
 
 	for (let i = 0; i < weekendDays.length; i++) {
 		createDateDiv(weekendDays[i], i, dateHolderParent);
-		createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer);
+		createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer, dateArrayBooked);
 	}
 });
 

@@ -3,6 +3,7 @@ import createDateDiv from './populateDateHolder.js';
 import removeDivDateHolders from './removeDivDateHolders.js';
 import createBookingSlots from './createBookingSlots.js';
 import removeChildrenDivs from '../removeChildrenDivs.js';
+import fetchAndChangeDateString from './fetchAndChangeDateString.js';
 
 const monthList = document.querySelector('#month-list');
 const dateHolderParent = document.querySelector('#date-holders-parent');
@@ -46,10 +47,11 @@ window.onload = async () => {
 	previousMonth = monthList.value;
 
 	weekendDays = await getWeekendDates(currentMonth, monthNames);
+	let dateArrayBooked = await fetchAndChangeDateString();
 
 	for (let i = 0; i < weekendDays.length; i++) {
 		createDateDiv(weekendDays[i], i, dateHolderParent);
-		createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer);
+		createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer, dateArrayBooked);
 	}
 };
 
@@ -61,11 +63,12 @@ monthList.addEventListener('click', async (e) => {
 		await removePreviousDays();
 
 		weekendDays = await getWeekendDates(monthList.options[monthList.selectedIndex].value, monthNames);
+		let dateArrayBooked = await fetchAndChangeDateString();
 		await removeChildrenDivs(bookingSlotsContainer);
 
 		for (let i = 0; i < weekendDays.length; i++) {
 			createDateDiv(weekendDays[i], i, dateHolderParent);
-			createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer);
+			createBookingSlots(weekendDays[i], timeValues, bookingSlotsContainer, dateArrayBooked);
 		}
 	}
 });

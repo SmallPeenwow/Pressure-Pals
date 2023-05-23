@@ -304,6 +304,39 @@
         return;
     }
 
+    // For fetching booked dates that are accepted and pending
+    if (isset($_POST['fetch-booked-dates-status']))
+    {
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $sql = "SELECT date_time FROM pressure_pals_booking WHERE action_level = 'accept' OR action_level = 'pending'";
+
+        $result = mysqli_query($conn, $sql);
+
+        $date_array = [];
+
+        while ($row = mysqli_fetch_array($result))
+        {
+            array_push($date_array, $row['date_time']);
+        }
+
+        echo json_encode($date_array);
+
+        mysqli_close($conn);
+
+        return;
+    }
+
     // For already Logged In
     if (isset($_POST['onload-login-id']))
     {
