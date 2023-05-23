@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../src/styles/UserHome/weekendHolder.css">
     <link rel="stylesheet" href="../src/styles/UserHome/timeDisplaySide.css">
     <link rel="stylesheet" href="../src/styles/UserHome/bookingSlots.css">
+    <link rel="stylesheet" href="../src/styles/UserHome/dialogBox.css">
     <link rel="stylesheet" href="../src/styles/menuItemsStyle.css">
 
     
@@ -18,9 +19,28 @@
     <script type="module" defer src="../src/components/Menu/logOut.js"></script>
     <script type="module" defer src="../src/components/Menu/deleteAccount.js"></script>
     <script type="module" defer src="../src/components/UserHome/goToUserDatesBookings.js"></script>
+    <script type="module" defer src="../src/components/UserHome/dialogBoxFuntion.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
+
+    <div class="dialog-box">
+        <div class="dialog-box-container">
+            <h4 id="header-date">6 Sunday 10:00 AM</h4>
+    
+            <div class="dialog-box-address-container">
+                <h3>Address:</h3>
+                <input type="text" id="dialog-box-address" placeholder="Enter Address...">
+                <h3>Suburb:</h3>
+                <input type="text" id="dialog-box-suburb" placeholder="Enter Suburb...">
+            </div>
+    
+            <div class="dialog-box-button-container">
+                <button id="dialog-box-button-cancel">Cancel</button>
+                <button id="dialog-box-button-accept">Accept</button>
+            </div>
+        </div>
+    </div>
       
     <div id="menu-items" class="hidden">            
         <button id="log-out">

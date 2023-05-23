@@ -1,3 +1,5 @@
+@import '../../constants/constants.css';
+
 .time-display-side-container div {
 	color: var(--secondary-color);
 	background-color: var(--table-time-display-color);

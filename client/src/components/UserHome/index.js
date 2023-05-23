@@ -37,6 +37,8 @@ const timeValues = [
 	'18:00:00',
 ];
 
+//TODO: refresh function
+
 let weekendDays = [];
 let previousMonth;
 
