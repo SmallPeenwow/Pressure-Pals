@@ -8,7 +8,7 @@ const monthList = document.querySelector('#month-list');
 const dateHolderParent = document.querySelector('#date-holders-parent');
 const bookingSlotsContainer = document.querySelector('.booking-slots-container');
 
-const monthNames = [
+export const monthNames = [
 	'January',
 	'February',
 	'March',

@@ -8,8 +8,10 @@
 	--table-date-display-color: #009ff9;
 	--table-slot-available-color: #ffffff;
 	--table-slot-closed-color: #d7d7d7;
+	/* TODO: Have not implemented too much and little time for it */
 	--table-slot-pending-color: #ecd505;
 	--table-slot-accepted-color: #3dd807;
+	/* TODO: END */
 
 	--user-bookings-declined-background-color: #ce2b2b;
 	--user-bookings-pending-background-color: #f0da10;

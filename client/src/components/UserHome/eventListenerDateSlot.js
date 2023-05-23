@@ -4,6 +4,7 @@ const dialogBox = document.querySelector('.dialog-box');
 const headerDate = document.querySelector('#header-date');
 const dialogBoxAddress = document.querySelector('#dialog-box-address');
 const dialogBoxSuburb = document.querySelector('#dialog-box-suburb');
+const storageId = document.querySelector('#storage-id');
 
 const eventListenerDateSlot = (e) => {
 	dialogBox.style.display = 'flex';
@@ -17,6 +18,7 @@ const eventListenerDateSlot = (e) => {
 
 	dialogBoxAddress.value = userAddressArray[1];
 	dialogBoxSuburb.value = userAddressArray[2];
+	storageId.innerText = e.target.id;
 };
 
 export default eventListenerDateSlot;

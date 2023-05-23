@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="../src/styles/snackbarStyle.css">
     <link rel="stylesheet" href="../src/styles/UserHome/userHomeStyle.css">
     <link rel="stylesheet" href="../src/styles/UserHome/weekendHolder.css">
     <link rel="stylesheet" href="../src/styles/UserHome/timeDisplaySide.css">
@@ -23,8 +24,10 @@
     <title>Pressure Pals</title>
 </head>
 <body>
+    <div id="snack-bar"></div>
 
     <div class="dialog-box">
+        <div id="storage-id"></div>
         <div class="dialog-box-container">
             <h4 id="header-date">6 Sunday 10:00 AM</h4>
     
@@ -33,6 +36,16 @@
                 <input type="text" id="dialog-box-address" placeholder="Enter Address...">
                 <h3>Suburb:</h3>
                 <input type="text" id="dialog-box-suburb" placeholder="Enter Suburb...">
+            </div>
+
+            <div class="dialog-box-service-container">
+                <h3>Service:</h3>
+                <select id="service-type">
+                    <option>All</option>
+                    <option>Roof</option>
+                    <option>Wall</option>
+                    <option>Drive-way</option>
+                </select>
             </div>
     
             <div class="dialog-box-button-container">

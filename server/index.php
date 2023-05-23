@@ -241,6 +241,68 @@
 
         return;
     }
+    
+    // For User book Day
+    if (
+        isset($_POST['book-date-user-id']) &&
+        isset($_POST['book-date-date']) && 
+        isset($_POST['book-date-address']) &&
+        isset($_POST['book-date-suburb']) &&
+        isset($_POST['book-date-service']) &&
+        isset($_POST['book-date-action-level'])
+    )
+    {
+        $userId = $_POST['book-date-user-id'];
+        $date = $_POST['book-date-date'];
+        $address = $_POST['book-date-address'];
+        $suburb = $_POST['book-date-suburb'];
+        $service = $_POST['book-date-service'];
+        $actionLevel = $_POST['book-date-action-level'];
+
+        $host = 'localhost';
+        $username = 'root';
+        $password = 'password';
+        $dbname = 'pressure_pals';
+    
+        $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
+
+        if (mysqli_connect_errno())
+        {
+            die("Connection error: " . mysqli_connect_errno());
+        } 
+
+        $duplicateCheck = "SELECT date_time FROM pressure_pals_booking WHERE date_time = '$date'";
+
+        $result = mysqli_query($conn, $duplicateCheck);
+
+        $duplicateDateCheck = mysqli_fetch_array($result);
+
+        if ($duplicateDateCheck != null)
+        {
+            echo json_encode("Not Available");
+            mysqli_close($conn);
+
+            return;
+        }
+
+        $sql = "INSERT INTO pressure_pals_booking (service_type, date_time, action_level, booking_address, suburb, client_id) VALUES (?, ?, ?, ?, ?, ?)";
+        
+        $stmt = mysqli_stmt_init($conn);
+
+        if (!mysqli_stmt_prepare($stmt, $sql)){
+            die(mysqli_error($conn));
+        }
+
+        mysqli_stmt_bind_param($stmt, 'ssssss', $service, $date, $actionLevel, $address, $suburb, $userId);
+
+        mysqli_stmt_execute($stmt);
+
+        echo json_encode('Successful');
+
+        mysqli_close($conn);
+
+        return;
+    }
 
     // For already Logged In
     if (isset($_POST['onload-login-id']))
