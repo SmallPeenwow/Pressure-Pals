@@ -24,7 +24,7 @@
 }
 
 .date-container {
-	flex-basis: 50%;
+	flex-basis: 60%;
 	padding: 10px;
 	display: flex;
 	flex-direction: column;
@@ -32,7 +32,7 @@
 }
 
 .user-status-container {
-	flex-basis: 50%;
+	flex-basis: 40%;
 	display: flex;
 	padding: 10px 35px;
 	align-items: flex-end;
