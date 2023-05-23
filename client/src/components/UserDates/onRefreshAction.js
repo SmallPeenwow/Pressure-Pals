@@ -6,10 +6,10 @@ import removeChildrenDivs from '../removeChildrenDivs.js';
 
 const refreshButton = document.querySelector('#refresh-button');
 const innerTableContainerUserBookedDates = document.querySelector('.inner-table-container-user-booking-dates');
-const snackbar = document.querySelector('#snack-bar');
+const snackBar = document.querySelector('#snack-bar');
 
 refreshButton.addEventListener('click', async () => {
-	refreshButtonDisableTimer(refreshButton, snackbar);
+	refreshButtonDisableTimer(refreshButton, snackBar);
 
 	let userId = getUserLocalStorage()[0];
 

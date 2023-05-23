@@ -23,7 +23,7 @@ export const monthNames = [
 	'December',
 ];
 
-const timeValues = [
+export const timeValues = [
 	'08:00:00',
 	'09:00:00',
 	'10:00:00',
@@ -36,8 +36,6 @@ const timeValues = [
 	'17:00:00',
 	'18:00:00',
 ];
-
-//TODO: refresh function
 
 let weekendDays = [];
 let previousMonth;

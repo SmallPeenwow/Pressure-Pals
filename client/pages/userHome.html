@@ -21,6 +21,7 @@
     <script type="module" defer src="../src/components/Menu/deleteAccount.js"></script>
     <script type="module" defer src="../src/components/UserHome/goToUserDatesBookings.js"></script>
     <script type="module" defer src="../src/components/UserHome/dialogBoxFuntion.js"></script>
+    <script type="module" defer src="../src/components/UserHome/refreshActionButton.js"></script>
     <title>Pressure Pals</title>
 </head>
 <body>
@@ -80,7 +81,7 @@
 
     <main>
         <div class="button-container">
-            <button class="refresh">Refresh</button>
+            <button id="refresh" class="refresh">Refresh</button>
             <button id="check-bookings-button" type="button">Check Bookings</button>
             <select id="month-list" class="button-date"></select>
         </div>
