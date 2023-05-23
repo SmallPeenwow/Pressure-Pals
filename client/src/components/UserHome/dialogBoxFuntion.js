@@ -13,8 +13,6 @@ const snackBar = document.querySelector('#snack-bar');
 const monthList = document.querySelector('#month-list');
 const serviceType = document.querySelector('#service-type');
 
-//TODO: Must change clicked to close status
-
 dialogButtonCancel.addEventListener('click', (e) => {
 	e.preventDefault();
 
