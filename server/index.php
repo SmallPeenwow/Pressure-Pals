@@ -27,6 +27,12 @@
     
         exit(0);
     }
+
+    $ServerHostName = 'localhost';
+    $ServerUserName = 'root';
+    $ServerUserPassword = 'password';
+    $ServerUserDatabaseName = 'pressure_pals';
+
     
     // For Login
     if (isset($_POST['login-email']) && isset($_POST['login-password'])) 
@@ -34,7 +40,7 @@
         $email = $_POST['login-email'];
         $client_password = $_POST['login-password'];
 
-        check_user_login($email, $client_password);
+        check_user_login($email, $client_password, $ServerHostName, $ServerUserName, $ServerUserPassword, $ServerUserDatabaseName);
     }
 
     // For Create Account
@@ -52,16 +58,16 @@
         $address = $_POST['address'];
         $suburb = $_POST['suburb'];
 
-        add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb);
+        add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb, $ServerHostName, $ServerUserName, $ServerUserPassword, $ServerUserDatabaseName);
     }
 
     // For fetching pending requests for Admin
     if (isset($_POST['admin-pending-requests']))
     {
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -118,10 +124,10 @@
         $booking_response_id = $_POST['admin-action-response-requests-id'];
         $booking_response_type = $_POST['admin-action-response-requests-type'];
       
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -149,10 +155,10 @@
         $user_id = $_POST['user-id-bookings-requests'];
         $final_array_all_user_bookings = [];
 
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -185,10 +191,10 @@
     // For Admin bookings Retrieval data
     if (isset($_POST['admin-booking-request']))
     {
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -259,10 +265,10 @@
         $service = $_POST['book-date-service'];
         $actionLevel = $_POST['book-date-action-level'];
 
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -271,7 +277,7 @@
             die("Connection error: " . mysqli_connect_errno());
         } 
 
-        $duplicateCheck = "SELECT date_time FROM pressure_pals_booking WHERE date_time = '$date'";
+        $duplicateCheck = "SELECT date_time FROM pressure_pals_booking WHERE date_time = '$date' AND (action_level = 'accept' OR action_level = 'pending')";
 
         $result = mysqli_query($conn, $duplicateCheck);
 
@@ -307,10 +313,10 @@
     // For fetching booked dates that are accepted and pending
     if (isset($_POST['fetch-booked-dates-status']))
     {
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -342,10 +348,10 @@
     {
         $client_id_onload = $_POST['onload-login-id'];
       
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -369,10 +375,10 @@
     if (isset($_POST['delete-account-user-id'])){
         $client_id_delete = $_POST['delete-account-user-id'];
 
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $ServerHostName;
+        $username = $ServerUserName;
+        $password = $ServerUserPassword;
+        $dbname = $ServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
@@ -389,20 +395,19 @@
         echo json_encode("Error deleting record");
        }
 
-
         mysqli_close($conn);
 
         return;
     }
 
-    function check_user_login($email, $client_password)
+    function check_user_login($email, $client_password, $PassServerHostName, $PassServerUsername, $PassServerPassword, $PassServerUserDatabaseName)
     {
         $isUser = false;
 
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $PassServerHostName;
+        $username = $PassServerUsername;
+        $password = $PassServerPassword;
+        $dbname = $PassServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
     
@@ -435,12 +440,12 @@
         return;
     }
 
-    function add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb){
+    function add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb, $PassServerHostName, $PassServerUsername, $PassServerPassword, $PassServerUserDatabaseName){
         // Errors also go through to make id which should not be allowed
-        $host = 'localhost';
-        $username = 'root';
-        $password = 'password';
-        $dbname = 'pressure_pals';
+        $host = $PassServerHostName;
+        $username = $PassServerUsername;
+        $password = $PassServerPassword;
+        $dbname = $PassServerUserDatabaseName;
     
         $conn = mysqli_connect(hostname: $host, username: $username, password: $password, database: $dbname);
 
