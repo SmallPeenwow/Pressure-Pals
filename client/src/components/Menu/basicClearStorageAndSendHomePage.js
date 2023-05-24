@@ -1,6 +1,6 @@
 const basicClearStorageAndSendHomePage = async () => {
 	localStorage.clear('pressure-pals-user');
-	window.open('/client/landingPage.html', '_parent');
+	window.open('/client/index.html', '_parent');
 };
 
 export default basicClearStorageAndSendHomePage;
