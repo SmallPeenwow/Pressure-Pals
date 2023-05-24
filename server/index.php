@@ -205,13 +205,10 @@
 
         $array_values_to_send = [];
 
-        // Get the current date
-        $currentDate = date('Y-m-d');
+        // Get the Week before the current date
+        $dayBefore = date('Y-m-d 00:00:00', strtotime('-7 day'));
 
-        // Get the day before the current date
-        $dayBefore = date('Y-m-d', strtotime('-1 day'));
-
-        $query = "SELECT * FROM pressure_pals_booking WHERE action_level = 'accept' AND date_time >= $dayBefore AND date_time >= $currentDate ORDER BY date_time DESC";
+        $query = "SELECT * FROM pressure_pals_booking WHERE action_level = 'accept' AND date_time >= '$dayBefore' ORDER BY date_time DESC";
 
         $result = mysqli_query($conn, $query);
     
@@ -441,7 +438,7 @@
     }
 
     function add_user($name, $surname, $email, $cellNumber, $client_password, $address, $suburb, $PassServerHostName, $PassServerUsername, $PassServerPassword, $PassServerUserDatabaseName){
-        // Errors also go through to make id which should not be allowed
+     
         $host = $PassServerHostName;
         $username = $PassServerUsername;
         $password = $PassServerPassword;
@@ -464,11 +461,10 @@
 
         // If user count is less than 7 it will add user
         if ($rowCount < 7){
-            // TODO: test this out still
+
             mysqli_begin_transaction($conn);
             try {
-                // $conn->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
-           
+
                 $sql = "INSERT INTO pressure_pal_client (client_name, client_surname, email, phone_number, client_password, address, suburb) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
                 $stmt = mysqli_stmt_init($conn);
@@ -479,15 +475,10 @@
         
                 mysqli_stmt_bind_param($stmt, 'sssssss', $name, $surname, $email, $cellNumber, $client_password, $address, $suburb);
         
-                //Will still process duplicate record and next one will still increase
                 mysqli_stmt_execute($stmt);
-                // if(!mysqli_stmt_execute($stmt)){
-                //     echo json_encode('failed');
-                // }
-                // $conn->commit();
+
                 mysqli_commit($conn);
             } catch (\Throwable $e){
-                // $conn->rollback();
                 mysqli_rollback($conn);
                 echo json_encode('failed');
                 return;

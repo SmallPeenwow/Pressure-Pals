@@ -1,5 +1,6 @@
 import sendResponseTypeBookingAction from './sendResponseTypeBookingAction.js';
 import makeSnackbarVisible from '../snackbar.js';
+import removeCard from './removeCard.js';
 
 const snackbar = document.querySelector('#snack-bar');
 
@@ -12,6 +13,7 @@ const acceptRequestAction = async (e) => {
 		let responseMessage = await sendResponseTypeBookingAction(id, responseValue);
 
 		makeSnackbarVisible(responseMessage, snackbar);
+		removeCard(e.target);
 	}
 };
 

@@ -59,6 +59,7 @@ main {
 	border-radius: var(--border-radius-5);
 	background-color: var(--secondary-color);
 	padding: 30px 50px 40px 65px;
+	overflow-y: auto;
 }
 
 .button-container {
