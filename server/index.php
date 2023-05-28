@@ -28,6 +28,8 @@
         exit(0);
     }
 
+    var_dump('It Work');
+
     $ServerHostName = 'localhost';
     $ServerUserName = 'root';
     $ServerUserPassword = 'password';
