@@ -59,6 +59,7 @@ const getServerResponse = async () => {
 	dataSubmit.append('login-email', emailValue.value.toLowerCase());
 	dataSubmit.append('login-password', passwordValue.value);
 
+	// REMINDER mode: 'no-cors' needed for vercel
 	// return fetch('http://localhost:3000/server/index.php', {
 	return fetch('https://pressure-pal-server.onrender.com/', {
 		mode: 'no-cors',
@@ -78,7 +79,8 @@ const userPreviousLogin = async (id) => {
 	const dataSubmit = new FormData();
 	dataSubmit.append('onload-login-id', id);
 
-	return fetch('https://pressure-pal-server.onrender.com/', {
+	// return fetch('https://pressure-pal-server.onrender.com/', {
+	return fetch('http://localhost:3000/server/index.php', {
 		method: 'POST',
 		body: dataSubmit,
 	})
