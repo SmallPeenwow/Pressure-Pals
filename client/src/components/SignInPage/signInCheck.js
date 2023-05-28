@@ -61,6 +61,7 @@ const getServerResponse = async () => {
 
 	// return fetch('http://localhost:3000/server/index.php', {
 	return fetch('https://pressure-pal-server.onrender.com/', {
+		mode: 'no-cors',
 		method: 'POST',
 		body: dataSubmit,
 	})
