@@ -79,8 +79,8 @@ const userPreviousLogin = async (id) => {
 	const dataSubmit = new FormData();
 	dataSubmit.append('onload-login-id', id);
 
-	// return fetch('https://pressure-pal-server.onrender.com/', {
-	return fetch('http://localhost:3000/server/index.php', {
+	// return fetch('http://localhost:3000/server/index.php', {
+	return fetch('https://pressure-pal-server.onrender.com/', {
 		method: 'POST',
 		body: dataSubmit,
 	})
