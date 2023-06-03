@@ -410,6 +410,7 @@
     
         if (mysqli_connect_errno())
         {
+            echo json_decode("fail");
             die("Connection error: " . mysqli_connect_errno());
         } 
 
